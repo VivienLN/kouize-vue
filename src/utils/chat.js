@@ -1,5 +1,4 @@
 
-import ComfyJS from 'comfy.js';
 import CONFIG from '../config'
 
 ComfyJS.onChat = (user, message, flags, self, extra) => {
