@@ -1,25 +1,23 @@
 <script>
-import { ref } from 'vue'
-import CONFIG from '../config'
-import Chat from '../utils/chat'
+  import CONFIG from '../config'
+  import Chat from '../utils/chat'
 
-export default {
-  data() {
-    return {
-      config: {},
-      messages: [],
+  export default {
+    data() {
+      return {
+        config: {},
+        messages: [],
+      }
+    },
+
+    mounted() {
+      this.config = CONFIG;
+      Chat.onAnswer((user, message) => {
+        this.messages.push({user: user, message: message});
+        console.log('chat callback, message: ' + message);
+      });
     }
-  },
-
-  mounted() {
-    this.config = CONFIG;
-    Chat.onAnswer((user, message) => {
-      this.messages.push({user: user, message: message});
-      console.log('chat callback, message: ' + message);
-    });
   }
-}
-
 </script>
 
 <template>
