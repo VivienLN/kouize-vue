@@ -2,7 +2,6 @@
   import MCQ from './components/questions/MCQ.vue';
   import Timer from './components/Timer.vue';
   import Settings from './components/Settings.vue';
-  import CONFIG from './config';
   import Chat from './components/utils/Chat.js';
   
   export default {
@@ -14,7 +13,6 @@
 
     data() {
       return {
-        CONFIG: Object.freeze(CONFIG),
         settings: {},
         question: null,
         questionIndex: 0,
@@ -40,7 +38,7 @@
       setQuestion(index) {
         this.questionStep = 0;
         this.questionIndex = index;
-        this.question = CONFIG.questions[index];
+        this.question = this.settings.questions[index];
       },
       nextQuestion() {
         this.setQuestion(this.questionIndex + 1);
@@ -55,9 +53,9 @@
         this.settings = {
           channel: localStorage.getItem('channel'),
           timer: localStorage.getItem('timer'),
+          questions: JSON.parse(localStorage.getItem('questions')),
         };
         console.log("settings", this.settings);
-        console.log("settings.timer", this.settings.timer);
         // Chat
         this.chat.init(this.settings.channel);
       }
