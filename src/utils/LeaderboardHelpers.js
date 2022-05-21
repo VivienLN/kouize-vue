@@ -16,7 +16,7 @@ export default {
     getLeaderboard(name) {
         let storageValue = localStorage.getItem(name);
         if(!storageValue) {
-            this.saveLeaderboard(name, {});
+            this.resetLeaderboard(name);
             return {};
         }
         return JSON5.parse(storageValue);
@@ -24,5 +24,9 @@ export default {
 
     saveLeaderboard(name, data) {
         localStorage.setItem(name, JSON5.stringify(data));
+    },
+
+    resetLeaderboard(name) {
+        this.saveLeaderboard(name, {});
     }
 }

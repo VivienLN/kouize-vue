@@ -7,21 +7,26 @@
     ],
     data() {
       return {
-
+        data: {}
       }
     },
 
-    computed: {
-      data() {
-        let board = LeaderboardHelpers.getLeaderboard(this.name);
-        let computed = [];
-        for(let user in board) {
-          computed.push({
-            user: user,
-            score: board[user]
-          });
-        }
-        return computed.sort((a, b) => b.score - a.score);
+    created() {
+      let board = LeaderboardHelpers.getLeaderboard(this.name);
+      let computed = [];
+      for(let user in board) {
+        computed.push({
+          user: user,
+          score: board[user]
+        });
+      }
+      this.data = computed.sort((a, b) => b.score - a.score);
+    },
+
+    methods: {
+      reset() {
+        LeaderboardHelpers.resetLeaderboard(this.name);
+        this.data = {};
       }
     }
   }
@@ -42,6 +47,7 @@
         <td>{{ score }}</td>
       </tr>
     </table>
+    <button @click="reset">Reset</button>
   </div>
 </template>
 
