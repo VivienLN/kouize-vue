@@ -1,4 +1,6 @@
 <script>
+  import Helpers from '../../utils/Helpers';
+
   // Steps:
   // 0: show the question
   // 1: show the proposed answers
@@ -21,7 +23,7 @@
         console.log('onSingleLetterCallback, letter: ' + letter);
         this.computedAnswers.forEach(answer => {
           if(answer.letter == letter.toUpperCase()) {
-            answer.users.push(user);
+            answer.users.push(Helpers.sanitizeUser(user));
           }
         });
       });
@@ -65,6 +67,7 @@
         }
         // Finish question
         if(newStep >= MAX_STEP) {
+          // Event
           this.$emit('onFinished');
         }
       },
