@@ -1,22 +1,32 @@
 <script>
   import MCQ from './components/questions/MCQ.vue';
   import Timer from './components/Timer.vue';
+  import Settings from './components/Settings.vue';
   import CONFIG from './config';
+  import Chat from './components/utils/Chat.js';
   
   export default {
     components: {
       MCQ,
-      Timer
+      Timer,
+      Settings
     },
 
     data() {
       return {
         CONFIG: Object.freeze(CONFIG),
+        settings: {},
         question: null,
         questionIndex: 0,
         questionStep: 0,
         timerStarted: false,
+        chat: Chat
       }
+    },
+
+    created() {
+      // Settings
+      this.updateSettings();
     },
 
     methods: {
@@ -40,6 +50,16 @@
       },
       stopTimer() {
         this.timerStarted = false;
+      },
+      updateSettings() {
+        this.settings = {
+          channel: localStorage.getItem('channel'),
+          timer: localStorage.getItem('timer'),
+        };
+        console.log("settings", this.settings);
+        console.log("settings.timer", this.settings.timer);
+        // Chat
+        this.chat.init(this.settings.channel);
       }
     },
   }
@@ -50,15 +70,17 @@
   <div>
     <button @click="nextStep">Next</button>
   </div>
-  <Timer :isStarted="timerStarted" :totalTime="CONFIG.timer" />
+  <Timer :isStarted="timerStarted" :totalTime="settings.timer" />
   <MCQ 
     v-if="question" 
     :question="question" 
     :step="questionStep" 
+    :chat="chat"
     @onStart="startTimer" 
     @onShowRightAnswer="stopTimer" 
     @onFinished="nextQuestion"
   />
+  <Settings @onSaved="updateSettings" />
 </template>
 
 <style>

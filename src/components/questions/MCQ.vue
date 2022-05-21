@@ -1,6 +1,4 @@
 <script>
-  import Chat from '../utils/Chat.js';
-
   // Steps:
   // 0: show the question
   // 1: show the proposed answers
@@ -11,11 +9,12 @@
   export default {
     props: [
       'question',
-      'step'
+      'step',
+      'chat'
     ],
 
     mounted() {
-      Chat.onSingleLetter((user, letter) => {
+      this.chat.onSingleLetter((user, letter) => {
         if(this.step != 1) {
           return;
         }
@@ -30,8 +29,7 @@
 
     data() {      
       return {
-        computedAnswers: {},
-        Chat: Chat,
+        computedAnswers: {}
       }
     },
 
