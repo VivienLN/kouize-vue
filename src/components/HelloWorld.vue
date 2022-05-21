@@ -1,6 +1,6 @@
 <script>
   import CONFIG from '../config'
-  import Chat from '../utils/chat'
+  import Chat from '../utils/Chat'
 
   export default {
     data() {

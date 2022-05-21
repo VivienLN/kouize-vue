@@ -41,7 +41,6 @@
       stopTimer() {
         this.timerStarted = false;
       }
-
     },
   }
 </script>

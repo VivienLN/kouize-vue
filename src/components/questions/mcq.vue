@@ -1,4 +1,6 @@
 <script>
+  import Chat from '../utils/Chat.js';
+
   // Steps:
   // 0: show the question
   // 1: show the proposed answers
@@ -13,10 +15,44 @@
     ],
 
     mounted() {
+      Chat.onSingleLetter((user, letter) => {
+        console.log('onSingleLetterCallback, letter: ' + letter);
+        this.computedAnswers.forEach(answer => {
+          if(answer.letter == letter.toUpperCase()) {
+            answer.users.push(user);
+          }
+        });
+      });
+    },
 
+    data() {      
+      return {
+        computedAnswers: {},
+        Chat: Chat,
+      }
     },
 
     watch: {
+      question: {
+        handler() {
+          // Only keep the 4 first answers, and shuffle them
+          // Also restructure the array a little
+          let letters = ['A', 'B', 'C', 'D'];
+          this.computedAnswers = this.question.answers
+            .slice(0, 4)
+            .map((answer, index) => ({
+              label: answer, 
+              is_right: !!(index === this.question.right_answer),
+              users: [],
+            }))
+            .sort((a, b) => 0.5 - Math.random())
+            .map((answer, index) => ({
+              ...answer,
+              letter: letters[index],
+            }));
+        },
+        immediate: true
+      },
       step(newStep, oldStep) {
         // Start question (usually to start a timer)
         if(newStep == 1) {
@@ -32,17 +68,6 @@
         }
       },
     },
-
-    computed: {
-      computedAnswers() {
-        return this.question.answers
-          .map((answer, index) => ({
-            label: answer, 
-            is_right: !!(index === this.question.right_answer) 
-          }))
-          .sort((a, b) => 0.5 - Math.random());
-      }
-    }
   }
 </script>
 
@@ -50,8 +75,8 @@
   <div>
     <h2>{{ question.label }}</h2>
     <ul v-if="step>=1">
-      <li v-for="({ label, is_right }, index) in computedAnswers">
-        {{ label }}
+      <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
+        {{ letter }} - {{ label }} ({{ users.length }})
         <strong v-show="step>= 2 && is_right">(correct)</strong>
       </li>
     </ul>
