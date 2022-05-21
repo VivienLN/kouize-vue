@@ -16,6 +16,9 @@
 
     mounted() {
       Chat.onSingleLetter((user, letter) => {
+        if(this.step != 1) {
+          return;
+        }
         console.log('onSingleLetterCallback, letter: ' + letter);
         this.computedAnswers.forEach(answer => {
           if(answer.letter == letter.toUpperCase()) {
