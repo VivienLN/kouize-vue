@@ -18,19 +18,28 @@
 
     data() {      
       return {
-        computedAnswers: []
+        computedAnswers: [],
+        answeredUsers: [],
       }
     },
 
     mounted() {
       this.chat.onSingleLetter((user, letter) => {
+        // Not the time to answer
         if(this.step != 1) {
           return;
         }
+        // User already gave an answer for this question
+        let username = Helpers.sanitizeUser(user);
+        if(this.answeredUsers.includes(username)) {
+          return;
+        }
+        // Save user name in the answer they chose
         console.log('onSingleLetterCallback, letter: ' + letter);
         this.computedAnswers.forEach(answer => {
           if(answer.letter == letter.toUpperCase()) {
-            answer.users.push(Helpers.sanitizeUser(user));
+            answer.users.push(username);
+            this.answeredUsers.push(username);
           }
         });
       });
@@ -54,6 +63,8 @@
               ...answer,
               letter: letters[index],
             }));
+          // Reset users having answered
+          this.answeredUsers = [];
         },
         immediate: true
       },
