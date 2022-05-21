@@ -3,6 +3,7 @@
   import Timer from './components/Timer.vue';
   import Settings from './components/Settings.vue';
   import Chat from './utils/Chat.js';
+  import JSON5 from 'json5';
   
   export default {
     components: {
@@ -51,7 +52,7 @@
       },
       updateSettings() {
         try {
-          var questions = JSON.parse(localStorage.getItem('questions'));
+          var questions = JSON5.parse(localStorage.getItem('questions'));
         } catch {
           var questions = [];
           alert('Formattage questions invalide!');

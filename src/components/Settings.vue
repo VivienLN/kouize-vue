@@ -6,14 +6,14 @@
         timer: localStorage.getItem('timer') ?? 20,
         questions: localStorage.getItem('questions') ?? `[
   {
-    "label": "Comment dit-on \\"Groenland\\" en groenlandais ?",
-    "answers": [
+    label: 'Comment dit-on "Groenland" en groenlandais ?',
+    answers: [
         "Grønland",
         "Kalaallit Nunaat",
         "Nuukiikaalt",
         "Guuriitanaak"
     ],
-    "right_answer": 1
+    right_answer: 1
   }
 ]`
       }
