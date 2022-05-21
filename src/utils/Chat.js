@@ -11,12 +11,12 @@ ComfyJS.onChat = (user, message, flags, self, extra) => {
 
 export default {
     // Must init first
-    init: function(channel) {
+    init(channel) {
         ComfyJS.Init(channel);
     },
 
     // Answer like: A, B, C, etc.
-    onSingleLetter: function(callback) {
+    onSingleLetter(callback) {
         onSingleLetterCallback = callback;
     }
 };
