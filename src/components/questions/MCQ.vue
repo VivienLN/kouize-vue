@@ -1,5 +1,6 @@
 <script>
   import Helpers from '../../utils/Helpers';
+  import LeaderboardHelpers from '../../utils/LeaderboardHelpers';
 
   // Steps:
   // 0: show the question
@@ -15,6 +16,12 @@
       'chat'
     ],
 
+    data() {      
+      return {
+        computedAnswers: []
+      }
+    },
+
     mounted() {
       this.chat.onSingleLetter((user, letter) => {
         if(this.step != 1) {
@@ -27,12 +34,6 @@
           }
         });
       });
-    },
-
-    data() {      
-      return {
-        computedAnswers: {}
-      }
     },
 
     watch: {
@@ -63,11 +64,18 @@
         }
         // Show right answer
         if(newStep == 2) {
+          // Save Scores
+          // Update even user that has not answered right, but with 0 points
+          // to ensure they are saved in leaderboard
+          this.computedAnswers.forEach(answer => {
+            let points = answer.is_right ? 1 : 0;
+            LeaderboardHelpers.incrementUsersScores(answer.users, points);
+          });
+          // Event
           this.$emit('onShowRightAnswer');
         }
         // Finish question
         if(newStep >= MAX_STEP) {
-          // Event
           this.$emit('onFinished');
         }
       },
