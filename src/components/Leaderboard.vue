@@ -3,7 +3,8 @@
 
   export default {
     props: [
-      'name'
+      'name',
+      'resets'
     ],
     data() {
       return {
@@ -26,6 +27,10 @@
     methods: {
       reset() {
         LeaderboardHelpers.resetLeaderboard(this.name);
+        // Also reset leaderboards specified in the resets (array) prop
+        if(Array.isArray(this.resets))    {
+          this.resets.forEach(name => LeaderboardHelpers.resetLeaderboard(name));
+        }
         this.data = {};
       }
     }

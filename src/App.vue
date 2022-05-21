@@ -101,10 +101,17 @@ import Leaderboard from './components/Leaderboard.vue';
   <Settings v-if="showSettings" @onSaved="updateSettings" />
 
   <button @click="showLeaderboardSession = !showLeaderboardSession">Leaderboard</button>
-  <leaderboard v-if="showLeaderboardSession" name="leaderboard_session" />
-  
+  <leaderboard 
+    v-if="showLeaderboardSession" 
+    name="leaderboard_session" 
+  />
+
   <button @click="showLeaderboardGlobal = !showLeaderboardGlobal">Leaderboard (global)</button>
-  <leaderboard v-if="showLeaderboardGlobal" name="leaderboard_global" />
+  <leaderboard 
+    v-if="showLeaderboardGlobal" 
+    name="leaderboard_global" 
+    :resets="['leaderboard_session']"
+  />
 </template>
 
 <style>
