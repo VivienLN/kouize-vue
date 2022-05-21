@@ -2,7 +2,7 @@
   import MCQ from './components/questions/MCQ.vue';
   import Timer from './components/Timer.vue';
   import Settings from './components/Settings.vue';
-  import Chat from './components/utils/Chat.js';
+  import Chat from './utils/Chat.js';
   
   export default {
     components: {

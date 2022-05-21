@@ -1,4 +1,3 @@
-
 let onSingleLetterCallback = null;
 
 ComfyJS.onChat = (user, message, flags, self, extra) => {
