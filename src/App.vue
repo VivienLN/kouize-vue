@@ -1,27 +1,48 @@
 <script>
-  import HelloWorld from './components/HelloWorld.vue'
   import MCQ from './components/questions/mcq.vue'
   import CONFIG from './config'
   
   export default {
     components: {
-      HelloWorld,
       MCQ
     },
 
     data() {
       return {
         config: {},
-        currentQuestion: CONFIG.questions[0],
+        question: null,
+        questionIndex: 0,
+        questionStep: 0,
       }
+    },
+
+    methods: {
+      nextStep() {
+        if(this.question === null) {
+          this.setQuestion(0);
+        } else {
+          this.questionStep++;
+        }
+      },
+      nextQuestion() {
+        this.setQuestion(this.questionIndex + 1);
+      },
+      setQuestion(index) {
+        this.questionStep = 0;
+        this.questionIndex = index;
+        this.question = CONFIG.questions[index];
+      }
+
     },
   }
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld />
-  <MCQ :question="currentQuestion" />
+  <div>
+    <button @click="nextStep">Next</button>
+  </div>
+  <MCQ v-if="question" :question="question" :step="questionStep" @onFinished="nextQuestion" />
 </template>
 
 <style>
