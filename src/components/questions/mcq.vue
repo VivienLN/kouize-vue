@@ -9,16 +9,24 @@
   export default {
     props: [
       'question',
-      'step',
+      'step'
     ],
 
     mounted() {
-      
+
     },
 
     watch: {
       step(newStep, oldStep) {
-        console.log('step => ', newStep);
+        // Start question (usually to start a timer)
+        if(newStep == 1) {
+          this.$emit('onStart');
+        }
+        // Show right answer
+        if(newStep == 2) {
+          this.$emit('onShowRightAnswer');
+        }
+        // Finish question
         if(newStep >= MAX_STEP) {
           this.$emit('onFinished');
         }

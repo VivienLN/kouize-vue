@@ -1,18 +1,21 @@
 <script>
-  import MCQ from './components/questions/mcq.vue'
-  import CONFIG from './config'
+  import MCQ from './components/questions/MCQ.vue';
+  import Timer from './components/Timer.vue';
+  import CONFIG from './config';
   
   export default {
     components: {
-      MCQ
+      MCQ,
+      Timer
     },
 
     data() {
       return {
-        config: {},
+        CONFIG: Object.freeze(CONFIG),
         question: null,
         questionIndex: 0,
         questionStep: 0,
+        timerStarted: false,
       }
     },
 
@@ -24,13 +27,19 @@
           this.questionStep++;
         }
       },
-      nextQuestion() {
-        this.setQuestion(this.questionIndex + 1);
-      },
       setQuestion(index) {
         this.questionStep = 0;
         this.questionIndex = index;
         this.question = CONFIG.questions[index];
+      },
+      nextQuestion() {
+        this.setQuestion(this.questionIndex + 1);
+      },
+      startTimer() {
+        this.timerStarted = true;
+      },
+      stopTimer() {
+        this.timerStarted = false;
       }
 
     },
@@ -42,7 +51,15 @@
   <div>
     <button @click="nextStep">Next</button>
   </div>
-  <MCQ v-if="question" :question="question" :step="questionStep" @onFinished="nextQuestion" />
+  <Timer :isStarted="timerStarted" :totalTime="CONFIG.timer" />
+  <MCQ 
+    v-if="question" 
+    :question="question" 
+    :step="questionStep" 
+    @onStart="startTimer" 
+    @onShowRightAnswer="stopTimer" 
+    @onFinished="nextQuestion"
+  />
 </template>
 
 <style>
