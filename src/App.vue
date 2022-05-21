@@ -4,12 +4,14 @@
   import Settings from './components/Settings.vue';
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
+import Leaderboard from './components/Leaderboard.vue';
   
   export default {
     components: {
       MCQ,
       Timer,
-      Settings
+      Settings,
+        Leaderboard
     },
 
     data() {
@@ -21,6 +23,8 @@
         timerStarted: false,
         chat: Chat,
         showSettings: false,
+        showLeaderboardSession: false,
+        showLeaderboardGlobal: false,
       }
     },
 
@@ -95,6 +99,12 @@
   />
   <button @click="showSettings = !showSettings">Settings</button>
   <Settings v-if="showSettings" @onSaved="updateSettings" />
+
+  <button @click="showLeaderboardSession = !showLeaderboardSession">Leaderboard</button>
+  <leaderboard v-if="showLeaderboardSession" name="leaderboard_session" />
+  
+  <button @click="showLeaderboardGlobal = !showLeaderboardGlobal">Leaderboard (global)</button>
+  <leaderboard v-if="showLeaderboardGlobal" name="leaderboard_global" />
 </template>
 
 <style>
