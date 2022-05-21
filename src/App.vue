@@ -19,7 +19,8 @@
         questionIndex: 0,
         questionStep: 0,
         timerStarted: false,
-        chat: Chat
+        chat: Chat,
+        showSettings: false,
       }
     },
 
@@ -51,10 +52,12 @@
         this.timerStarted = false;
       },
       updateSettings() {
+        var hasErrors = false;
         try {
           var questions = JSON5.parse(localStorage.getItem('questions'));
         } catch {
           var questions = [];
+          hasErrors= true;
           alert('Formattage questions invalide!');
         }
 
@@ -66,6 +69,10 @@
         console.log("settings", this.settings);
         // Chat
         this.chat.init(this.settings.channel);
+        // Close settings
+        if(!hasErrors) {
+          this.showSettings = false;
+        }
       }
     },
   }
@@ -86,7 +93,8 @@
     @onShowRightAnswer="stopTimer" 
     @onFinished="nextQuestion"
   />
-  <Settings @onSaved="updateSettings" />
+  <button @click="showSettings = !showSettings">Settings</button>
+  <Settings v-if="showSettings" @onSaved="updateSettings" />
 </template>
 
 <style>
