@@ -50,10 +50,17 @@
         this.timerStarted = false;
       },
       updateSettings() {
+        try {
+          var questions = JSON.parse(localStorage.getItem('questions'));
+        } catch {
+          var questions = [];
+          alert('Formattage questions invalide!');
+        }
+
         this.settings = {
           channel: localStorage.getItem('channel'),
           timer: localStorage.getItem('timer'),
-          questions: JSON.parse(localStorage.getItem('questions')),
+          questions: questions,
         };
         console.log("settings", this.settings);
         // Chat
