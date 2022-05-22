@@ -1,22 +1,20 @@
 let onSingleLetterCallback = null;
 
 ComfyJS.onChat = (user, message, flags, self, extra) => {
-    
-    // User entered a single letter
-    if(onSingleLetterCallback && (/^[a-z]$/i).test(message)) {
-        onSingleLetterCallback(user, message);
-    }
+  // User entered a single letter
+  if(onSingleLetterCallback && (/^[a-z]$/i).test(message)) {
+    onSingleLetterCallback(user, message);
+  }
 }
-// ComfyJS.Init(CONFIG.channel);
 
 export default {
-    // Must init first
-    init(channel) {
-        ComfyJS.Init(channel);
-    },
+  // Must init first
+  init(channel) {
+    ComfyJS.Init(channel);
+  },
 
-    // Answer like: A, B, C, etc.
-    onSingleLetter(callback) {
-        onSingleLetterCallback = callback;
-    }
+  // Answer like: A, B, C, etc.
+  onSingleLetter(callback) {
+    onSingleLetterCallback = callback;
+  }
 };
