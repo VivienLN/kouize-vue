@@ -146,6 +146,10 @@
 </template>
 
 <style>
+#app {
+  font-family: 'Signika', sans-serif;
+  font-weight: 500;
+}
 body {
   background: #f2f2f2;
 }
