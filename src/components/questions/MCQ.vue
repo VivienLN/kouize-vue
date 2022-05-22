@@ -95,12 +95,23 @@
 </script>
 
 <template>
-  <div>
-    <h2>{{ question.label }}</h2>
-    <ul v-if="step>=1">
+  <div class="px-8">
+    <h2 class="rounded py-16 px-8 drop-shadow-lg bg-white mb-12 font-bold">
+      {{ question.label }}
+    </h2>
+    <ul v-if="step>=1" class="grid grid-cols-2 gap-4">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
-        {{ letter }} - {{ label }} ({{ users.length }})
-        <strong v-show="step>= 2 && is_right">(correct)</strong>
+        <div
+          class="rounded p-4 drop-shadow-lg"
+          :class="{
+            'bg-white': (step < 2 || !is_right),
+            'bg-emerald-400': (step>= 2 && is_right),
+            'opacity-50': (step>= 2 && !is_right)
+          }"
+        >
+          {{ letter }} - {{ label }} ({{ users.length }})
+          <strong v-show="step>= 2 && is_right">(correct)</strong>
+        </div>
       </li>
     </ul>
   </div>

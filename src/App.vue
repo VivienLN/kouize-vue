@@ -88,7 +88,7 @@
 </script>
 
 <template>
-  <Timer :isStarted="timerStarted" :totalTime="settings.timer" />
+  <Timer :isStarted="timerStarted" :totalTime="settings.timer" class="timer" />
   <MCQ 
     v-if="question" 
     :question="question" 
@@ -99,9 +99,9 @@
     @onFinished="nextQuestion"
   />
 
-  <hr />
+  <hr class="my-12" />
 
-  <div class="py-4 flex justify-center gap-4 w-full">
+  <div class="px-8 flex justify-center gap-4 w-full">
     <Button @click="nextStep" color="indigo">
       <FastForwardIcon />
       Next
@@ -151,5 +151,13 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body {
+  background: #f2f2f2;
+}
+.timer {
+  margin-bottom: -3rem;
+  position: relative;
+  z-index: 100;
 }
 </style>

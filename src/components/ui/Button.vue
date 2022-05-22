@@ -8,14 +8,14 @@
 
 <template>
   <button 
-    class="rounded px-5 py-2 block"
+    class="rounded px-5 py-2 block font-bold"
     :class="{
       [
         `bg-${color}-500 
         text-${color}-100 
-        hover:bg-${color}-600 h
+        hover:bg-${color}-400 h
         over:text-white 
-        active:bg-${color}-400`
+        active:bg-${color}-300`
       ]: color,
     }"
     v-bind="$attrs"
