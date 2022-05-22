@@ -156,7 +156,7 @@ body {
   background: #f2f2f2;
 }
 .timer {
-  margin-bottom: -3rem;
+  margin-bottom: -2rem;
   position: relative;
   z-index: 100;
 }

@@ -96,21 +96,25 @@
 
 <template>
   <div class="px-8">
-    <h2 class="rounded py-16 px-8 drop-shadow-lg bg-white mb-12 font-bold">
+    <h2 class="rounded-md text-3xl text-indigo-700 py-16 px-8 drop-shadow-lg bg-white mb-12 font-bold">
       {{ question.label }}
     </h2>
-    <ul v-if="step>=1" class="grid grid-cols-2 gap-4">
+    <ul v-if="step>=1" class="grid grid-cols-2 gap-6 text-2xl">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
         <div
-          class="rounded p-4 drop-shadow-lg"
+          class="rounded-md p-4 drop-shadow-lg grid grid-cols-6 items-center gap-4 h-full"
           :class="{
             'bg-white': (step < 2 || !is_right),
-            'bg-emerald-400': (step>= 2 && is_right),
+            ['bg-emerald-400 font-bold']: (step>= 2 && is_right),
             'opacity-50': (step>= 2 && !is_right)
           }"
         >
-          {{ letter }} - {{ label }} ({{ users.length }})
-          <strong v-show="step>= 2 && is_right">(correct)</strong>
+          <div class="letter bg-gray-100 font-bold rounded-xl" :class="{'text-emerald-600':(step>= 2 && is_right)}">
+            {{ letter }}
+          </div>
+          <div class="answer-text col-span-4">
+            {{ label }} ({{ users.length }})
+          </div>
         </div>
       </li>
     </ul>
@@ -118,5 +122,9 @@
 </template>
 
 <style scoped>
-
+  .letter {
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+  }
 </style>
