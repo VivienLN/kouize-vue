@@ -113,7 +113,10 @@
             {{ letter }}
           </div>
           <div class="answer-text col-span-4">
-            {{ label }} ({{ users.length }})
+            {{ label }} 
+            <span v-if="step>=2">
+              ({{ answeredUsers.length > 0 ? Math.round(100 * (users.length / answeredUsers.length)) : 0 }}%)
+            </span>
           </div>
         </div>
       </li>
