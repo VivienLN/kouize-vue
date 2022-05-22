@@ -7,4 +7,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /(bg|border|text)-[a-z-]+-[0-9]+/,
+      variants: ['hover', 'focus', 'active'],
+    },
+  ],
 }

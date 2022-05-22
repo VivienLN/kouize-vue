@@ -4,14 +4,19 @@
   import Settings from './components/Settings.vue';
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
-import Leaderboard from './components/Leaderboard.vue';
+  import Leaderboard from './components/Leaderboard.vue';
+  import {  FastForwardIcon, CogIcon } from '@heroicons/vue/solid'
+  import PrizeIcon from './components/ui/icons/PrizeIcon.vue'
   
   export default {
     components: {
       MCQ,
       Timer,
       Settings,
-      Leaderboard
+      Leaderboard,
+      PrizeIcon,
+      FastForwardIcon,
+      CogIcon,
     },
 
     data() {
@@ -83,9 +88,6 @@ import Leaderboard from './components/Leaderboard.vue';
 </script>
 
 <template>
-  <div>
-    <button @click="nextStep">Next</button>
-  </div>
   <Timer :isStarted="timerStarted" :totalTime="settings.timer" />
   <MCQ 
     v-if="question" 
@@ -96,16 +98,44 @@ import Leaderboard from './components/Leaderboard.vue';
     @onShowRightAnswer="stopTimer" 
     @onFinished="nextQuestion"
   />
-  <button @click="showSettings = !showSettings">Settings</button>
+
+  <hr />
+
+  <div class="py-4 flex justify-center gap-4 w-full">
+    <Button @click="nextStep" color="indigo">
+      <FastForwardIcon />
+      Next
+    </Button>
+
+    <Button 
+      color="sky" 
+      @click="showLeaderboardSession = !showLeaderboardSession"
+    >
+      <PrizeIcon />
+      Leaderboard
+    </Button>
+    <Button 
+      color="sky" 
+      @click="showLeaderboardGlobal = !showLeaderboardGlobal"
+    >
+      <PrizeIcon />
+      Leaderboard (global)
+    </Button>
+    <Button 
+      color="sky" 
+      @click="showSettings = !showSettings"
+    >
+      <CogIcon />
+      Settings
+    </Button>
+  </div>
   <Settings v-if="showSettings" @onSaved="updateSettings" />
 
-  <button @click="showLeaderboardSession = !showLeaderboardSession">Leaderboard</button>
   <leaderboard 
     v-if="showLeaderboardSession" 
     name="leaderboard_session" 
   />
 
-  <button @click="showLeaderboardGlobal = !showLeaderboardGlobal">Leaderboard (global)</button>
   <leaderboard 
     v-if="showLeaderboardGlobal" 
     name="leaderboard_global" 
