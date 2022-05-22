@@ -88,70 +88,64 @@
 </script>
 
 <template>
-  <Timer :isStarted="timerStarted" :totalTime="settings.timer" class="timer" />
-  <MCQ 
-    v-if="question" 
-    :question="question" 
-    :step="questionStep" 
-    :chat="chat"
-    @onStart="startTimer" 
-    @onShowRightAnswer="stopTimer" 
-    @onFinished="nextQuestion"
-  />
+  <div class="p-8">
+    <!-- Questions -->
+    <Timer :isStarted="timerStarted" :totalTime="settings.timer" class="timer" />
+    <MCQ 
+      v-if="question" 
+      :question="question" 
+      :step="questionStep" 
+      :chat="chat"
+      @onStart="startTimer" 
+      @onShowRightAnswer="stopTimer" 
+      @onFinished="nextQuestion"
+    />
 
-  <hr class="my-12" />
+    <!-- Commands -->
+    <div class="fixed left-0 bottom-0 right-0 p-8 flex justify-center gap-4 w-full">
+      <Button @click="nextStep" color="indigo">
+        <FastForwardIcon />
+        Next
+      </Button>
 
-  <div class="px-8 flex justify-center gap-4 w-full">
-    <Button @click="nextStep" color="indigo">
-      <FastForwardIcon />
-      Next
-    </Button>
+      <Button 
+        color="sky" 
+        @click="showLeaderboardSession = !showLeaderboardSession"
+      >
+        <PrizeIcon />
+        Leaderboard
+      </Button>
+      <Button 
+        color="sky" 
+        @click="showLeaderboardGlobal = !showLeaderboardGlobal"
+      >
+        <PrizeIcon />
+        Leaderboard (global)
+      </Button>
+      <Button 
+        color="sky" 
+        @click="showSettings = !showSettings"
+      >
+        <CogIcon />
+        Settings
+      </Button>
+    </div>
 
-    <Button 
-      color="sky" 
-      @click="showLeaderboardSession = !showLeaderboardSession"
-    >
-      <PrizeIcon />
-      Leaderboard
-    </Button>
-    <Button 
-      color="sky" 
-      @click="showLeaderboardGlobal = !showLeaderboardGlobal"
-    >
-      <PrizeIcon />
-      Leaderboard (global)
-    </Button>
-    <Button 
-      color="sky" 
-      @click="showSettings = !showSettings"
-    >
-      <CogIcon />
-      Settings
-    </Button>
+    <!-- Modals -->
+    <Settings v-if="showSettings" @onSaved="updateSettings" />
+    <leaderboard 
+      v-if="showLeaderboardSession" 
+      name="leaderboard_session" 
+    />
+    <leaderboard 
+      v-if="showLeaderboardGlobal" 
+      name="leaderboard_global" 
+      :resets="['leaderboard_session']"
+    />
   </div>
-  <Settings v-if="showSettings" @onSaved="updateSettings" />
-
-  <leaderboard 
-    v-if="showLeaderboardSession" 
-    name="leaderboard_session" 
-  />
-
-  <leaderboard 
-    v-if="showLeaderboardGlobal" 
-    name="leaderboard_global" 
-    :resets="['leaderboard_session']"
-  />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 body {
   background: #f2f2f2;
 }

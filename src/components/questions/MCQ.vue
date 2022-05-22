@@ -95,17 +95,17 @@
 </script>
 
 <template>
-  <div class="px-8">
-    <h2 class="rounded-md text-3xl text-indigo-700 py-16 px-8 drop-shadow-lg bg-white mb-12 font-bold">
+  <div class="text-center">
+    <h2 class="rounded-md text-3xl text-indigo-700 py-16 px-8 drop-shadow-lg bg-white mb-12 font-bold border-b-4 border-gray-200">
       {{ question.label }}
     </h2>
     <ul v-if="step>=1" class="grid grid-cols-2 gap-6 text-2xl">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
         <div
-          class="rounded-md p-4 drop-shadow-lg grid grid-cols-6 items-center gap-4 h-full"
+          class="rounded-md p-4 drop-shadow-lg grid grid-cols-6 items-center gap-4 border-b-4 h-full"
           :class="{
-            'bg-white': (step < 2 || !is_right),
-            ['bg-emerald-400 font-bold']: (step>= 2 && is_right),
+            ['bg-white border-gray-200']: (step < 2 || !is_right),
+            ['bg-emerald-400 border-emerald-500 font-bold']: (step>= 2 && is_right),
             'opacity-50': (step>= 2 && !is_right)
           }"
         >
