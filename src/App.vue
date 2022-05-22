@@ -11,7 +11,7 @@ import Leaderboard from './components/Leaderboard.vue';
       MCQ,
       Timer,
       Settings,
-        Leaderboard
+      Leaderboard
     },
 
     data() {
@@ -83,7 +83,6 @@ import Leaderboard from './components/Leaderboard.vue';
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <div>
     <button @click="nextStep">Next</button>
   </div>
