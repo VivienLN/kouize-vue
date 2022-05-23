@@ -1,6 +1,6 @@
 <script>
   import Helpers from '../../utils/Helpers';
-  import LeaderboardHelpers from '../../utils/LeaderboardHelpers';
+  import ScoresHelpers from '../../utils/ScoresHelper';
 
   // Steps:
   // 0: show the question
@@ -80,7 +80,7 @@
           // to ensure they are saved in leaderboard
           this.computedAnswers.forEach(answer => {
             let points = answer.is_right ? 1 : 0;
-            LeaderboardHelpers.incrementUsersScores(answer.users, points);
+            ScoresHelpers.incrementUsersScores(answer.users, points);
           });
           // Event
           this.$emit('onShowRightAnswer');

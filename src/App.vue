@@ -5,8 +5,8 @@
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
   import Leaderboard from './components/Leaderboard.vue';
-  import {  FastForwardIcon, CogIcon } from '@heroicons/vue/solid'
-  import PrizeIcon from './components/ui/icons/PrizeIcon.vue'
+  import { FastForwardIcon, CogIcon } from '@heroicons/vue/solid';
+  import PrizeIcon from './components/ui/icons/PrizeIcon.vue';
   
   export default {
     components: {
@@ -75,7 +75,6 @@
           timer: localStorage.getItem('timer'),
           questions: questions,
         };
-        console.log("settings", this.settings);
         // Chat
         this.chat.init(this.settings.channel);
         // Close settings
@@ -120,7 +119,7 @@
         @click="showLeaderboardGlobal = !showLeaderboardGlobal"
       >
         <PrizeIcon />
-        Leaderboard (global)
+        Leaderboard global
       </Button>
       <Button 
         color="sky" 
@@ -133,14 +132,16 @@
 
     <!-- Modals -->
     <Settings v-if="showSettings" @onSaved="updateSettings" />
-    <leaderboard 
+    <Leaderboard 
       v-if="showLeaderboardSession" 
-      name="leaderboard_session" 
+      score-list="scores_session" 
+      display="Leaderboard"
     />
-    <leaderboard 
+    <Leaderboard 
       v-if="showLeaderboardGlobal" 
-      name="leaderboard_global" 
-      :resets="['leaderboard_session']"
+      score-list="scores_global" 
+      display="Leaderboard global"
+      :resets="['scores_session']"
     />
   </div>
 </template>
