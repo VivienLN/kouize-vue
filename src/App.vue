@@ -112,14 +112,14 @@
         @click="showLeaderboardSession = !showLeaderboardSession"
       >
         <PrizeIcon />
-        Leaderboard
+        Classement
       </Button>
       <Button 
         color="sky" 
         @click="showLeaderboardGlobal = !showLeaderboardGlobal"
       >
         <PrizeIcon />
-        Leaderboard global
+        Classement général
       </Button>
       <Button 
         color="sky" 
