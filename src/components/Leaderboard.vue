@@ -61,7 +61,7 @@
           {{ userName }}
         </div>
         <div class="col-span-2 text-right">
-          {{ score }} points
+          {{ score }} {{ score > 1 ? 'points' : 'point' }}
         </div>
       </li>
     </ul>
