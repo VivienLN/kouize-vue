@@ -35,6 +35,12 @@
       }
     },
 
+    computed: {
+      timerDuration() {
+        return this.question?.timer ?? this.settings.timer;
+      }
+    },
+
     created() {
       // Settings
       this.updateSettings();
@@ -100,7 +106,7 @@
   <!-- Main -->
     <div class="p-8 grow flex flex-col items-stretch justify-end relative">
       <!-- Questions -->
-      <Timer :isStarted="timerStarted" :totalTime="settings.timer" class="timer z-10" />
+      <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer z-10" />
       <MCQ 
         v-if="question" 
         :question="question" 
