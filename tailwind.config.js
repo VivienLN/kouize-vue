@@ -8,8 +8,8 @@ module.exports = {
     fontSize: {
       tiny: "1rem",
       small: "1.6rem",
-      base: "2.5rem",
-      xl: '3.5rem',
+      base: "2.4rem",
+      xl: '3.3rem',
     },
     spacing: {
       '0': '0',

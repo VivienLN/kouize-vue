@@ -13,14 +13,14 @@
         timer: localStorage.getItem('timer') ?? 20,
         questions: localStorage.getItem('questions') ?? `[
   {
+    type: 'mcq',
     label: 'Comment dit-on "Groenland" en groenlandais ?',
     answers: [
-        "Grønland",
-        "Kalaallit Nunaat",
-        "Nuukiikaalt",
-        "Guuriitanaak"
-    ],
-    right_answer: 1
+      "Kalaallit Nunaat",
+      "Grønland",
+      "Nuukiikaalt",
+      "Guuriitanaak"
+    ]
   }
 ]`
       }

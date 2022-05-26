@@ -55,7 +55,7 @@
             .slice(0, 4)
             .map((answer, index) => ({
               label: answer, 
-              is_right: !!(index === this.question.right_answer),
+              is_right: !!(index === 0),
               users: [],
             }))
             .sort((a, b) => 0.5 - Math.random())
