@@ -101,7 +101,7 @@
     />
 
     <!-- Commands -->
-    <div class="fixed left-0 bottom-0 right-0 p-8 flex justify-center gap-4 w-full">
+    <div class="fixed left-0 bottom-0 right-0 p-8 flex justify-center gap-2 w-full text-tiny">
       <Button @click="nextStep" color="indigo">
         <FastForwardIcon />
         Next

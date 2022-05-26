@@ -8,7 +8,7 @@
 
 <template>
   <button 
-    class="rounded px-5 py-2 block font-bold border-b-2"
+    class="rounded px-4 py-1 block font-bold border-b-2"
     :class="{
       [
         `bg-${color}-500 

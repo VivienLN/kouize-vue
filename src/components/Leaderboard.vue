@@ -42,14 +42,14 @@
 
 <template>
   <div class="rounded-md border-b-4 bordexr-gray-200 bg-white drop-shadow-lg p-8">
-    <h2 class="text-3xl font-bold text-indigo-700 mb-6">{{ display }}</h2>
+    <h2 class="text-xl font-bold text-indigo-700 mb-6">{{ display }}</h2>
     <ul>
       <li 
         v-for="({userName, score, rank}, index) in data" 
-        class="p-6 grid grid-cols-12 gap-x-4 bg-white mb-6 rounded-md border-2 bordexr-gray-200 text-xl items-center"
+        class="p-6 grid grid-cols-12 gap-x-4 bg-white mb-6 rounded-md border-2 bordexr-gray-200 items-center"
         :class="`border-${getRankColor(rank)}`"
       >
-        <div class="col-span-1 text-center text-3xl font-bold">
+        <div class="col-span-1 text-center font-bold">
           <div v-if="rank<=3">
             <PrizeIcon :class="`text-${getRankColor(rank)}`" class="h-12 mx-auto" />
           </div>

@@ -69,7 +69,7 @@
           :stroke-dashoffset="isStarted ? (time / totalTime * 290) : 290"
         />
       </svg>
-      <div class="number absolute inset-0 text-center text-3xl font-bold">
+      <div class="number absolute inset-0 text-center text-xl font-bold">
         {{ time }}
       </div>
     </div>
@@ -78,15 +78,14 @@
 
 <style scoped>
   .circle {
-    height: 8rem;
+    height: 10rem;
   }
   .circle circle {
     transition: stroke-dashoffset .8s ease-out;
-
   }
   .number {
     z-index: 110;
-    line-height: 8rem;
+    line-height: 10rem;
   }
 
   .timer {
