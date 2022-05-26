@@ -1,5 +1,12 @@
 <script>
+  import Button from './ui/Button.vue';
   export default {
+    props: [
+
+    ],
+    components: {
+      Button,
+    },
     data() {
       return {
         channel: localStorage.getItem('channel'),
@@ -26,6 +33,11 @@
         localStorage.setItem('channel', this.channel);
         localStorage.setItem('questions', this.questions);
         this.$emit('onSaved');
+      },
+
+      closeModal() {
+        console.log('closeModal');
+        this.open = false;
       }
     },
   }
@@ -52,8 +64,8 @@
     </label>
     <br />
     <br />
-
     <button @click="save">Save</button>
+    <Button class="text-tiny" color="sky" @click="save">Reset</Button>
   </div>
 </template>
 
