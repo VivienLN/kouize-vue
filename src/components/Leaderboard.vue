@@ -29,11 +29,11 @@
         }
         this.data = {};
       },
-      getRankColor(rank) {
+      getRankColor(rank, strength) {
         let colors = [];
-        colors[1] = 'amber-300';
-        colors[2] = 'slate-300';
-        colors[3] = 'orange-300';
+        colors[1] = 'amber-' + strength;
+        colors[2] = 'slate-' + strength;
+        colors[3] = 'orange-' + strength;
         return colors[rank];
       },
 
@@ -47,11 +47,11 @@
       <li 
         v-for="({userName, score, rank}, index) in data" 
         class="p-3 grid grid-cols-12 gap-x-2 bg-white mb-4 rounded-md border-2 bordexr-gray-200 items-center text-small"
-        :class="`border-${getRankColor(rank)}`"
+        :class="`border-${getRankColor(rank, 200)}`"
       >
         <div class="col-span-1 text-center font-bold">
           <div v-if="rank<=3">
-            <PrizeIcon :class="`text-${getRankColor(rank)}`" class="h-8 mx-auto" />
+            <PrizeIcon :class="`text-${getRankColor(rank, 300)}`" class="h-6 mx-auto" />
           </div>
           <div v-else>
             {{ rank }}
