@@ -44,28 +44,28 @@
 </script>
 
 <template>
-  <div>
-    <label>
-      Channel name<br/>
-      <input v-model="channel" />
-    </label>
-    <br />
-    <br />
-    <label>
-      Question timer<br/>
-      <span>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer. Il est recommandé d'attendre 10-15s après le timer, à cause du retard d'affichage entre streamer et viewers. Ainsi vous ne couperez pas la possibilité de jouer aux joueurs alors qu'ils voient encore le timer chez eux.)</span><br/>
-      <input v-model="timer" />
-    </label>
-    <br />
-    <br />
-    <label>
-      Questions<br/>
-      <textarea cols="80" rows="20" v-model="questions" />
-    </label>
-    <br />
-    <br />
-    <button @click="save">Save</button>
-    <Button class="text-tiny" color="sky" @click="save">Reset</Button>
+  <div class="text-tiny">
+    <div class="grid grid-cols-6 gap-4">
+      <label class="font-bold" for="settings-channel">Nom de la chaîne</label>
+      <div class="col-span-5">
+        <input id="settings-channel" v-model="channel" class="w-full rounded border border-slate-300 px-2 py-1" />
+      </div>
+
+      <label class="font-bold" for="settings-timer">Durée des questions</label>
+      <div class="col-span-5">
+        <input id="settings-timer" v-model="timer" class="w-full rounded border border-slate-300 px-2 py-1" />
+        <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
+      </div>
+
+      <label class="font-bold" for="settings-question">Questions</label>
+      <div class="col-span-5">
+        <textarea id="settings-question" cols="80" rows="20" v-model="questions" class="w-full rounded border border-slate-300 px-2 py-1 font-mono" />
+      </div>
+
+      <div class="col-start-6">
+        <Button class="w-full" color="indigo" @click="save">Save</Button>
+      </div>
+    </div>
   </div>
 </template>
 
