@@ -1,5 +1,8 @@
 <script>
   import Button from './ui/Button.vue';
+  import DefaultSettings from '../utils/DefaultSettings';
+  import JSON5 from 'json5';
+
   export default {
     props: [
 
@@ -7,23 +10,13 @@
     components: {
       Button,
     },
+
     data() {
       return {
-        channel: localStorage.getItem('channel'),
-        timer: localStorage.getItem('timer') ?? 20,
-        questions: localStorage.getItem('questions') ?? `[
-  {
-    type: 'mcq',
-    label: 'Comment dit-on "Groenland" en groenlandais ?',
-    answers: [
-      "Kalaallit Nunaat",
-      "Grønland",
-      "Nuukiikaalt",
-      "Guuriitanaak"
-    ]
-  }
-]`
-      }
+        channel: localStorage.getItem('channel') ?? DefaultSettings.channel,
+        timer: localStorage.getItem('timer') ?? DefaultSettings.timer,
+        questions: localStorage.getItem('questions') ?? JSON5.stringify(DefaultSettings.questions, null, 2),
+      };
     },
 
     methods: {
