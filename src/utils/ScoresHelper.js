@@ -30,7 +30,7 @@ export default {
     this.saveScores(listName, {});
   },
 
-  getLeaderboard(listName) {
+  getLeaderboard(listName, limit) {
     let scores = this.getScores(listName);
     let leaderboard = [];
     for(let userName in scores) {
@@ -43,6 +43,7 @@ export default {
     let lastRow = null;
     return leaderboard
       .sort((a, b) => b.score - a.score)
+      .slice(0, limit)
       .map((item, index) => {
         var rank = 1;
         if(lastRow === null) {

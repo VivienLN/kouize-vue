@@ -16,7 +16,7 @@
 
     data() {
       return {
-        data: ScoresHelpers.getLeaderboard(this.scoreList),
+        data: ScoresHelpers.getLeaderboard(this.scoreList, 50),
       }
     },
 
@@ -36,7 +36,6 @@
         colors[3] = 'orange-' + strength;
         return colors[rank];
       },
-
     }
   }
 </script>
@@ -51,7 +50,7 @@
       >
         <div class="col-span-1 text-center font-bold">
           <div v-if="rank<=3">
-            <PrizeIcon :class="`text-${getRankColor(rank, 300)}`" class="h-6 mx-auto" />
+            <PrizeIcon :class="`text-${getRankColor(rank, 400)}`" class="h-6 mx-auto" />
           </div>
           <div v-else>
             {{ rank }}
