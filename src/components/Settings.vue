@@ -33,7 +33,7 @@
 
 <template>
   <div class="text-tiny">
-    <div class="grid grid-cols-6 gap-4">
+    <div class="grid grid-cols-6 gap-2">
       <label class="font-bold py-1" for="settings-channel">Nom de la chaîne</label>
       <div class="col-span-5">
         <input id="settings-channel" v-model="channel" class="w-full rounded border border-slate-300 px-2 py-1" />

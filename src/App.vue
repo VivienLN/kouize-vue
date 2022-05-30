@@ -104,7 +104,7 @@
 <template>
   <div class="flex flex-col items-stretch h-screen">
   <!-- Main -->
-    <div class="p-8 grow flex flex-col items-stretch justify-end relative">
+    <div class="p-4 grow flex flex-col items-stretch justify-end relative">
       <!-- Questions -->
       <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer z-10" />
       <MCQ 
@@ -135,7 +135,7 @@
     </div>
 
     <!-- Commands -->
-    <div class="flex justify-center gap-2 w-full text-tiny z-50 p-8">
+    <div class="flex justify-center gap-2 w-full text-tiny z-50 p-4">
       <Button @click="nextStep" color="indigo">
         <FastForwardIcon />
         Next

@@ -45,7 +45,7 @@
     <ul>
       <li 
         v-for="({userName, score, rank}, index) in data" 
-        class="p-3 grid grid-cols-12 gap-x-2 bg-white mb-4 rounded-md border-2 bordexr-gray-200 items-center text-small"
+        class="py-2 px-3 grid grid-cols-12 gap-x-2 bg-white mb-3 rounded-md border-2 bordexr-gray-200 items-center text-small"
         :class="`border-${getRankColor(rank, 200)}`"
       >
         <div class="col-span-1 text-center font-bold">
