@@ -136,27 +136,27 @@
 
     <!-- Commands -->
     <div class="flex justify-center gap-2 w-full text-tiny z-50 p-4">
-      <Button @click="nextStep" color="indigo">
+      <Button @click="nextStep" color="primary">
         <FastForwardIcon />
         Next
       </Button>
 
       <Button 
-        color="sky"
+        color="secondary"
         @click="showModal('showLeaderboardSession')"
       >
         <PrizeIcon />
         Classement
       </Button>
       <Button 
-        color="sky"
+        color="secondary"
         @click="showModal('showLeaderboardGlobal')"
       >
         <PrizeIcon />
         Classement général
       </Button>
       <Button 
-        color="sky"
+        color="secondary"
         @click="showModal('showSettings')"
       >
         <CogIcon />
@@ -170,9 +170,6 @@
   #app {
     font-family: 'Signika', sans-serif;
     font-weight: 500;
-  }
-  body {
-    background: #f2f2f2;
   }
   .timer {
     margin-bottom: -2rem;

@@ -52,17 +52,16 @@
       'started': isStarted,
       'scale-75': !isStarted,
       'scale-100': isStarted,
-      'text-indigo-500': time >0, 
-      'text-rose-500': time <= 0
+      'text-primary-500 dark:text-primary-300': time >0, 
+      'text-rose-500 dark:text-rose-400': time <= 0
     }"
   >
     <div class="relative">
-      <svg viewBox="0 0 100 100" class="circle mx-auto -rotate-90">
+      <svg viewBox="0 0 100 100" class="circle mx-auto -rotate-90 fill-gray-50 dark:fill-gray-800">
         <circle 
           cx="50" 
           cy="50" 
           r="46" 
-          fill="#fff" 
           stroke="currentColor"
           stroke-width="6"
           stroke-dasharray="290"

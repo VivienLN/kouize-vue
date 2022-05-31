@@ -96,7 +96,7 @@
 
 <template>
   <div class="text-center">
-    <h2 class="rounded-md text-xl text-indigo-700 p-4 drop-shadow-lg bg-white mb-4 font-bold border-b-6 border-gray-200">
+    <h2 class="rounded-md text-xl text-primary-700 p-4 pt-6 drop-shadow-lg bg-gray-50 mb-4 font-bold border-b-6 border-gray-200 dark:text-primary-300 dark:bg-gray-800 dark:border-gray-900">
       {{ question.label }}
     </h2>
     <ul v-if="step>=1" class="grid grid-cols-2 gap-3">
@@ -104,12 +104,12 @@
         <div
           class="rounded-md p-2 drop-shadow-lg grid grid-cols-6 items-center gap-1 border-b-6 h-full"
           :class="{
-            ['bg-white border-gray-200']: (step < 2 || !is_right),
-            ['bg-emerald-400 border-emerald-500 font-bold']: (step>= 2 && is_right),
+            ['bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-900']: (step < 2 || !is_right),
+            ['bg-correct-400 border-correct-500 dark:bg-correct-400 dark:border-correct-400 font-bold']: (step>= 2 && is_right),
             'opacity-50': (step>= 2 && !is_right)
           }"
         >
-          <div class="letter bg-gray-100 font-bold rounded-md" :class="{'text-emerald-600':(step>= 2 && is_right)}">
+          <div class="letter bg-gray-200 font-bold rounded-md dark:bg-gray-700" :class="{'text-correct-600 dark:text-correct-500':(step>= 2 && is_right)}">
             {{ letter }}
           </div>
           <div class="answer-text col-span-4">

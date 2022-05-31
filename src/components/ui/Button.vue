@@ -15,11 +15,18 @@
         text-${color}-100 
         border-${color}-600
         hover:bg-${color}-400
-        hover:text-white 
+        hover:text-gray-50 
         hover:border-${color}-500
         active:bg-${color}-300
-        active:text-white  
-        active:border-${color}-400`
+        active:text-gray-50  
+        active:border-${color}-400
+        dark:bg-${color}-600 
+        dark:text-${color}-100 
+        dark:border-${color}-700
+        dark:hover:bg-${color}-700
+        dark:border-${color}-800
+        dark:active:bg-${color}-400
+        dark:active:border-${color}-500`
       ]: color,
     }"
     v-bind="$attrs"

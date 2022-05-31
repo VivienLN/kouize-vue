@@ -1,4 +1,7 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -10,6 +13,18 @@ module.exports = {
       small: "1.4rem",
       base: "2rem",
       xl: '2.8rem',
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      primary: colors.indigo,
+      secondary: colors.sky,
+      gray: colors.gray,
+      amber: colors.amber,
+      slate: colors.slate,
+      orange: colors.orange,
+      correct: colors.emerald,
+      rose: colors.rose
     },
     spacing: {
       '0': '0',
@@ -45,7 +60,7 @@ module.exports = {
   safelist: [
     {
       pattern: /(bg|border|text)-[a-z-]+-[0-9]+/,
-      variants: ['hover', 'focus', 'active'],
+      variants: ['hover', 'focus', 'active', 'dark', 'dark:hover', 'dark:active'],
     },
   ],
 }
