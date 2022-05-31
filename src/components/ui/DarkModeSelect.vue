@@ -20,7 +20,6 @@
 
 <template>
   <select
-    class="w-full rounded border border-gray-300 dark:border-gray-900 px-2 py-1 outline-primary-500 dark:bg-gray-700"
     v-model="themeMode"
     v-bind="$attrs"
   >
@@ -31,5 +30,9 @@
 </template>
 
 <style scoped>
-
+  select {
+    border: 1px solid var(--neutral-300); /* Dark: 900 */
+    background-color: var(--neutral-50); /* Dark: 900 */
+    color: var(--neutral-900); /* Dark: 50 */
+  }
 </style>

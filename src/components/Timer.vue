@@ -47,30 +47,25 @@
 
 <template>
   <div 
-    class="timer flex justify-center drop-shadow-lg"
+    class="timer"
     :class="{
       'started': isStarted,
-      'scale-75': !isStarted,
-      'scale-100': isStarted,
-      'text-primary-500 dark:text-primary-300': time >0, 
-      'text-rose-500 dark:text-rose-400': time <= 0
+      'finished': time <= 0
     }"
   >
-    <div class="relative">
-      <svg viewBox="0 0 100 100" class="circle mx-auto -rotate-90 fill-gray-50 dark:fill-gray-800">
-        <circle 
-          cx="50" 
-          cy="50" 
-          r="46" 
-          stroke="currentColor"
-          stroke-width="6"
-          stroke-dasharray="290"
-          :stroke-dashoffset="isStarted ? (time / totalTime * 290) : 290"
-        />
-      </svg>
-      <div class="number absolute inset-0 text-center text-xl font-bold">
-        {{ time }}
-      </div>
+    <svg viewBox="0 0 100 100" class="circle">
+      <circle 
+        cx="50" 
+        cy="50" 
+        r="46" 
+        stroke="currentColor"
+        stroke-width="6"
+        stroke-dasharray="290"
+        :stroke-dashoffset="isStarted ? (time / totalTime * 290) : 290"
+      />
+    </svg>
+    <div class="number">
+      {{ time }}
     </div>
   </div>
 </template>
@@ -78,21 +73,43 @@
 <style scoped>
   .circle {
     height: 10rem;
+    margin: 0 auto;
+    transform: rotate(-90deg);
+    fill: var(--neutral-50); /* Dark: 800 */
   }
   .circle circle {
     transition: stroke-dashoffset .8s ease-out;
   }
   .number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
     z-index: 110;
     line-height: 10rem;
   }
 
   .timer {
+    position: relative;
     opacity: 0;
     transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    filter: var(--shadow);
+    transform: scale(.75);
+    color: var(--primary-500); /* Dark: 300 */
   }
 
   .timer.started {
     opacity: 1;
+    transform: scale(1);
+  }
+
+  .timer.finished {
+    color: #e11d48;
   }
 </style>

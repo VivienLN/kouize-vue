@@ -17,13 +17,13 @@
 </script>
 
 <template>
-  <div class="absolute inset-0 z-40">
-    <div class="absolute inset-4 rounded-md border-b-4 border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 drop-shadow-lg p-4 flex flex-col items-stretch">
-      <div class="flex justify-between items-start px-2 pb-4">
-        <h2 class="font-bold text-primary-700 dark:text-primary-300">{{ title }}</h2>
-        <Button class="text-tiny px-2" color="gray" @click="this.$emit('close')"><XIcon /></Button>
-      </div>
-      <div class="grow overflow-auto h-full p-2">
+  <div class="wrapper">
+    <div class="modal">
+      <header>
+        <h2>{{ title }}</h2>
+        <Button color="neutral" @click="this.$emit('close')"><XIcon /></Button>
+      </header>
+      <div class="content">
         <slot></slot>
       </div>
     </div>
@@ -31,5 +31,43 @@
 </template>
 
 <style scoped>
-  
+  .wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+  }
+  .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    padding: 2rem;
+    border-radius: var(--bradius-lg);
+    background-color: var(--neutral-50); /* Dark: 800 */
+    border-bottom: 4px solid var(--neutral-200); /* Dark: 900 */
+    filter: var(--shadow);
+  }
+  header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-weight: var(--fw-bold);
+    color: var(--primary-700); /* Dark: 300 */
+  }
+  .content {
+    padding: .5rem 0;
+    flex-grow: 1;
+    height: 100%;
+    overflow: auto;
+  }
 </style>

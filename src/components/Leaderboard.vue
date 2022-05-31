@@ -30,14 +30,7 @@
           this.resets.forEach(listName => ScoresHelpers.resetScores(listName));
         }
         this.data = {};
-      },
-      getRankColor(rank, strength) {
-        let colors = [];
-        colors[1] = 'amber-' + strength;
-        colors[2] = 'slate-' + strength;
-        colors[3] = 'orange-' + strength;
-        return colors[rank];
-      },
+      }
     }
   }
 </script>
@@ -45,30 +38,61 @@
 <template>
   <div>
     <ul>
-      <li 
-        v-for="({userName, score, rank}, index) in data" 
-        class="py-2 px-3 grid grid-cols-12 gap-x-2 mb-3 rounded-md items-center text-small bg-gray-100 dark:bg-gray-900"
-      >
-        <div class="col-span-1 text-center font-bold">
+      <li v-for="({userName, score, rank}, index) in data">
+        <div>
           <div v-if="rank<=3">
-            <PrizeIcon :class="`text-${getRankColor(rank, 500)} dark:text-${getRankColor(rank, 400)}`" class="h-6 mx-auto" />
+            <PrizeIcon :class="'rank-'+rank" />
           </div>
           <div v-else>
             {{ rank }}
           </div>
         </div>
-        <div class="col-span-9">
+        <div>
           {{ userName }}
         </div>
-        <div class="col-span-2 text-right">
+        <div>
           {{ score }} {{ score > 1 ? 'points' : 'point' }}
         </div>
       </li>
     </ul>
-    <Button class="text-tiny" color="secondary" @click="reset"><RefreshIcon /> Reset</Button>
+    <Button color="secondary" @click="reset"><RefreshIcon /> Reset</Button>
   </div>
 </template>
 
 <style scoped>
-
+  ul {
+    color: var(--neutral-900);
+  }
+  li {
+    padding: 1rem 2rem;
+    border-radius: var(--bradius-lg);
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1rem;
+    background-color: var(--neutral-100); /* neutral-900 */
+  }
+  li svg {
+    margin: 0 auto;
+    height: 3rem;
+  }
+  .rank-1 {
+    color: #e9b040;
+  }
+  .rank-2 {
+    color: #94a3b8;
+  }
+  .rank-3 {
+    color: #da9155;
+  }
+  li > :nth-child(1) {
+    grid-column: span 1;
+  }
+  li > :nth-child(2) {
+    grid-column: span 9;
+  }
+  li > :nth-child(3) {
+    grid-column: span 2;
+    text-align: right;
+  }
 </style>

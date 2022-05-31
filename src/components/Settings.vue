@@ -36,36 +36,70 @@
 </script>
 
 <template>
-  <div class="text-tiny">
-    <div class="grid grid-cols-6 gap-2">
-      <label class="font-bold py-1" for="settings-channel">Nom de la chaîne</label>
-      <div class="col-span-5">
-        <input id="settings-channel" v-model="channel" class="w-full rounded border border-gray-400 dark:border-gray-900 dark:bg-gray-700 px-2 py-1 outline-primary-500" />
-      </div>
+  <div class="settings">
+    <label for="settings-channel">Nom de la chaîne</label>
+    <div>
+      <input id="settings-channel" v-model="channel" />
+    </div>
 
-      <label class="font-bold py-1" for="settings-timer">Durée des questions (secondes)</label>
-      <div class="col-span-5">
-        <input id="settings-timer" v-model="timer" type="number" min="0" step="5" class="w-full rounded border border-gray-400 dark:border-gray-900 dark:bg-gray-700 px-2 py-1 outline-primary-500" />
-        <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
-      </div>
+    <label for="settings-timer">Durée des questions (secondes)</label>
+    <div>
+      <input id="settings-timer" v-model="timer" type="number" min="0" step="5" />
+      <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
+    </div>
 
-      <label class="font-bold py-1" for="settings-thememode">Mode sombre / clair</label>
-      <div class="col-span-5">
-        <DarkModeSelect id="settings-thememode" />
-      </div>
+    <label for="settings-thememode">Mode sombre / clair</label>
+    <div>
+      <DarkModeSelect id="settings-thememode" />
+    </div>
 
-      <label class="font-bold py-1" for="settings-question">Questions</label>
-      <div class="col-span-5">
-        <textarea id="settings-question" cols="80" rows="20" v-model="questions" class="w-full rounded border border-gray-400 dark:border-gray-900 dark:bg-gray-700 px-2 py-1 font-mono outline-primary-500" />
-      </div>
+    <label for="settings-question">Questions</label>
+    <div>
+      <textarea id="settings-question" cols="80" rows="20" v-model="questions" />
+    </div>
 
-      <div class="col-start-6">
-        <Button class="w-full" color="primary" @click="save"><SaveIcon /> Save</Button>
-      </div>
+    <div>
+      <Button color="primary" @click="save"><SaveIcon /> Save</Button>
     </div>
   </div>
 </template>
 
 <style scoped>
+  .settings {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    font-size: var(--fs-tiny);
+    color: var(--neutral-900); /* Dark: 50 */
+  }
 
+  label {
+    font-weight: var(--fw-bold);
+  }
+
+  label + div {
+    grid-column: span 5 / span 5;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background-color: var(--neutral-50);
+    border: 2px solid var(--neutral-200);
+    border-radius: var(--bradius);
+    padding: .5rem 1rem;
+    outline-color: var(--primary-500);
+  }
+
+  .settings > div:last-child {
+    grid-column-start: 6;
+  }
+
+  .settings button {
+    width: 100%;
+  }
+
+  textarea {
+    font-family: var(--ff-mono);
+  }
 </style>

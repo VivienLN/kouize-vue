@@ -102,11 +102,11 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-stretch h-screen">
-  <!-- Main -->
-    <div class="p-4 grow flex flex-col items-stretch justify-end relative">
+  <main>
+  <!-- Game -->
+    <div class="game">
       <!-- Questions -->
-      <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer z-10" />
+      <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer" />
       <MCQ 
         v-if="question" 
         :question="question" 
@@ -135,7 +135,7 @@
     </div>
 
     <!-- Commands -->
-    <div class="flex justify-center gap-2 w-full text-tiny z-50 p-4">
+    <footer>
       <Button @click="nextStep" color="primary">
         <FastForwardIcon />
         Next
@@ -162,16 +162,39 @@
         <CogIcon />
         Settings
       </Button>
-    </div>
-  </div>
+    </footer>
+  </main>
 </template>
 
 <style>
-</style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100vh;
+  }
 
-<style>
+  .game {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;    
+    flex-grow: 1;
+    padding: 2rem;
+  }
+
   .timer {
     margin-bottom: -2rem;
     position: relative;
+    z-index: 10;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+
   }
 </style>

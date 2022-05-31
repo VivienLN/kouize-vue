@@ -2,16 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply text-base;
-    font-family: 'Signika', sans-serif;
-    font-weight: 500;
-}
-
 :root {
     /* Colors */
     --primary-300: #a5b4fc;
     --primary-500: #6366f1;
+    --primary-600: #4f46e5;
     --primary-700: #4338ca;
 
 	--secondary-400: #38bdf8;
@@ -19,21 +14,40 @@ body {
 	--secondary-600: #0284c7;
 	--secondary-700: #0369a1;
 
+    --neutral-50: #f9fafb;
     --neutral-100: #f3f4f6;
     --neutral-200: #e5e7eb;
     --neutral-300: #d1d5db;
     --neutral-400: #9ca3af;
+    --neutral-500: #6b7280;
     --neutral-700: #374151;
     --neutral-800: #1f2937;
     --neutral-900: #111827;
 
     /* Fonts */
+    --ff-base: 'Signika', sans-serif;
+    --ff-mono: monospace;
+
     --fs-tiny: 1rem;
     --fs-small: 1.4rem;
     --fs-base: 2rem;
     --fs-xl: 2.8rem;
 
+    --fw-normal: 500;
+    --fw-bold: 700;
+
     /* Border radius */
-    --bradius-tiny: .3rem;
+    --bradius: .3rem;
     --bradius-lg: .6rem;
+
+    /* Others */
+    --shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+body {
+    background-color: var(--neutral-200);
+    color: var(--netral-900);
+    font-family: var(--ff-base);
+    font-weight: var(--fw-normal);
+    font-size: var(--fs-base);
 }

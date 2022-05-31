@@ -8,20 +8,7 @@
 
 <template>
   <button 
-    class="transition rounded px-4 py-1 block font-bold border-b-4"
-    :class="{
-      [
-        `text-${color}-100
-        bg-${color}-500          
-        border-${color}-600
-        hover:text-gray-50 
-        hover:bg-${color}-600
-        hover:border-${color}-700
-        active:text-gray-50  
-        active:bg-${color}-400
-        active:border-${color}-500`
-      ]: color,
-    }"
+    :class="color"
     v-bind="$attrs"
   >
     <slot></slot>
@@ -35,5 +22,40 @@
     display: inline-block;
     margin-right: .2em;
     margin-top: -.16em;
+  }
+
+  button {
+    display: block;
+    font-size: var(--fs-tiny);
+    font-weight: var(--fw-bold);
+    transition: .4s;
+    border-radius: var(--bradius);
+    padding: .5rem 2rem;
+    color: var(--neutral-50);
+    border-bottom: 4px solid transparent;
+    filter: brightness(1);
+  }
+
+  button:hover {
+    filter: brightness(.9);
+  }
+
+  button:active, button:focus {
+    filter: brightness(1.1);
+  }
+
+  button.primary {
+    background-color: var(--primary-500);
+    border-color: var(--primary-600);
+  }
+
+  button.secondary {
+    background-color: var(--secondary-500);
+    border-color: var(--secondary-600);
+  }
+
+  button.neutral {
+    background-color: var(--neutral-300);
+    border-color: var(--neutral-400);
   }
 </style>
