@@ -102,11 +102,11 @@
     <ul v-if="step>=1" class="grid grid-cols-2 gap-3">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
         <div
-          class="rounded-md p-2 drop-shadow-lg grid grid-cols-6 items-center gap-1 border-b-6 h-full"
+          class="transition duration-1000 rounded-md p-2 drop-shadow-lg grid grid-cols-6 items-center gap-1 border-b-6 h-full"
           :class="{
             ['bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-900']: (step < 2 || !is_right),
-            ['bg-correct-400 border-correct-500 dark:bg-correct-500 dark:border-correct-600 font-bold']: (step>= 2 && is_right),
-            'opacity-50': (step>= 2 && !is_right)
+            ['bg-correct-400 border-correct-500 dark:bg-correct-600 dark:border-correct-700 font-bold']: (step>= 2 && is_right),
+            'opacity-40': (step>= 2 && !is_right)
           }"
         >
           <div class="letter bg-gray-200 font-bold rounded-md dark:bg-gray-700" :class="{'text-correct-600 dark:text-correct-500':(step>= 2 && is_right)}">
