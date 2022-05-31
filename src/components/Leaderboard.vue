@@ -45,12 +45,11 @@
     <ul>
       <li 
         v-for="({userName, score, rank}, index) in data" 
-        class="py-2 px-3 grid grid-cols-12 gap-x-2 bg-gray-100 mb-3 rounded-md border-2 items-center text-small"
-        :class="`border-${getRankColor(rank, 200)}`"
+        class="py-2 px-3 grid grid-cols-12 gap-x-2 mb-3 rounded-md items-center text-small bg-gray-100 dark:bg-gray-900"
       >
         <div class="col-span-1 text-center font-bold">
           <div v-if="rank<=3">
-            <PrizeIcon :class="`text-${getRankColor(rank, 400)}`" class="h-6 mx-auto" />
+            <PrizeIcon :class="`text-${getRankColor(rank, 500)} dark:text-${getRankColor(rank, 400)}`" class="h-6 mx-auto" />
           </div>
           <div v-else>
             {{ rank }}
