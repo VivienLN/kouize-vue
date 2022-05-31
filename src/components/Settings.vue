@@ -3,6 +3,7 @@
   import DarkModeSelect from './ui/DarkModeSelect.vue';
   import DefaultSettings from '../utils/DefaultSettings';
   import JSON5 from 'json5';
+  import { SaveIcon } from '@heroicons/vue/solid';
 
   export default {
     props: [
@@ -11,6 +12,7 @@
     components: {
       Button,
       DarkModeSelect,
+      SaveIcon,
     },
 
     data() {
@@ -58,7 +60,7 @@
       </div>
 
       <div class="col-start-6">
-        <Button class="w-full" color="primary" @click="save">Save</Button>
+        <Button class="w-full" color="primary" @click="save"><SaveIcon /> Save</Button>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@
   import ScoresHelpers from '../utils/ScoresHelper';
   import PrizeIcon from './ui/icons/PrizeIcon.vue';
   import Button from './ui/Button.vue';
+  import { RefreshIcon } from '@heroicons/vue/solid';
 
   export default {
     props: [
@@ -12,6 +13,7 @@
     components: {
       PrizeIcon,
       Button,
+      RefreshIcon,
     },
 
     data() {
@@ -63,7 +65,7 @@
         </div>
       </li>
     </ul>
-    <Button class="text-tiny" color="secondary" @click="reset">Reset</Button>
+    <Button class="text-tiny" color="secondary" @click="reset"><RefreshIcon /> Reset</Button>
   </div>
 </template>
 
