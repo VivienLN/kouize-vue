@@ -4,4 +4,36 @@
 
 body {
     @apply text-base;
+    font-family: 'Signika', sans-serif;
+    font-weight: 500;
+}
+
+:root {
+    /* Colors */
+    --primary-300: #a5b4fc;
+    --primary-500: #6366f1;
+    --primary-700: #4338ca;
+
+	--secondary-400: #38bdf8;
+	--secondary-500: #0ea5e9;
+	--secondary-600: #0284c7;
+	--secondary-700: #0369a1;
+
+    --neutral-100: #f3f4f6;
+    --neutral-200: #e5e7eb;
+    --neutral-300: #d1d5db;
+    --neutral-400: #9ca3af;
+    --neutral-700: #374151;
+    --neutral-800: #1f2937;
+    --neutral-900: #111827;
+
+    /* Fonts */
+    --fs-tiny: 1rem;
+    --fs-small: 1.4rem;
+    --fs-base: 2rem;
+    --fs-xl: 2.8rem;
+
+    /* Border radius */
+    --bradius-tiny: .3rem;
+    --bradius-lg: .6rem;
 }

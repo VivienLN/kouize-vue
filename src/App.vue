@@ -167,10 +167,9 @@
 </template>
 
 <style>
-  #app {
-    font-family: 'Signika', sans-serif;
-    font-weight: 500;
-  }
+</style>
+
+<style>
   .timer {
     margin-bottom: -2rem;
     position: relative;
