@@ -109,7 +109,7 @@
             'opacity-40': (step>= 2 && !is_right)
           }"
         >
-          <div class="letter bg-gray-200 font-bold rounded-md dark:bg-gray-700" :class="{'text-correct-600 dark:text-correct-500':(step>= 2 && is_right)}">
+          <div class="letter bg-gray-200 font-bold rounded-md dark:bg-gray-900" :class="{'text-correct-600 dark:text-correct-500':(step>= 2 && is_right)}">
             {{ letter }}
           </div>
           <div class="answer-text col-span-4">
