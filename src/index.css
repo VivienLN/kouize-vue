@@ -37,6 +37,25 @@
     --answer-right-bg: #34d399;
 }
 
+.theme-kouize-dark {
+    --primary-color: #6366f1;
+    --secondary-color: #0ea5e9;
+    --body-bg: #4b5563;
+    --card-bg: #1f2937;
+    --alt-bg: #111827;
+    --font-color: #f9fafb;
+    --title-color: #818cf8;
+    --button-bg: var(--primary-color);
+    --button-secondary-bg: var(--secondary-color);
+    --button-neutral-bg: #4b5563;
+    --button-color: #fff;
+    --input-bg: #1b2129;
+    --input-border: #17191d;
+    --timer-color: var(--primary-color);
+    --timer-finished-color: #e11d48;
+    --answer-right-bg: #34d399;
+}
+
 body {
     background-color: var(--body-bg);
     color: var(--font-color);
