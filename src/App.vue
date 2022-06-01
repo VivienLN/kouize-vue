@@ -172,6 +172,7 @@
     flex-direction: column;
     align-items: stretch;
     height: 100vh;
+    filter: var(--shadow);
   }
 
   .game {

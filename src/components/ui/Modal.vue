@@ -1,5 +1,6 @@
 <script>
   import Button from './Button.vue';
+  import Card from './Card.vue';
   import { XIcon } from '@heroicons/vue/solid';
 
   export default {
@@ -12,13 +13,14 @@
     components: {
       Button,
       XIcon,
+      Card,
     },
   }
 </script>
 
 <template>
   <div class="wrapper">
-    <div class="modal">
+    <Card class="modal">
       <header>
         <h2>{{ title }}</h2>
         <Button color="neutral" @click="this.$emit('close')"><XIcon /></Button>
@@ -26,7 +28,7 @@
       <div class="content">
         <slot></slot>
       </div>
-    </div>
+    </Card>
   </div>
 </template>
 
@@ -51,8 +53,6 @@
     padding: 2rem;
     border-radius: var(--bradius-lg);
     background-color: var(--neutral-50); /* Dark: 800 */
-    border-bottom: 4px solid rgba(0,0,0,.1);
-    filter: var(--shadow);
   }
   header {
     display: flex;

@@ -1,6 +1,7 @@
 <script>
   import Helpers from '../../utils/Helpers';
   import ScoresHelpers from '../../utils/ScoresHelper';
+  import Card from '../ui/Card.vue';
 
   // Steps:
   // 0: show the question
@@ -15,6 +16,10 @@
       'step',
       'chat'
     ],
+
+    components: {
+      Card,
+    },
 
     data() {      
       return {
@@ -96,12 +101,14 @@
 
 <template>
   <div class="text-center">
-    <h2>
-      {{ question.label }}
-    </h2>
+    <Card class="label">
+      <h2>
+        {{ question.label }}
+      </h2>
+    </Card>
     <ul v-if="step>=1">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
-        <div
+        <Card
           class="answer"
           :class="{
             right: (step>= 2 && is_right),
@@ -117,23 +124,21 @@
               ({{ answeredUsers.length > 0 ? Math.round(100 * (users.length / answeredUsers.length)) : 0 }}%)
             </span>
           </div>
-        </div>
+        </Card>
       </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
-  h2 {
+  .label {
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--primary-700); /* Dark: 300 */
     background-color: var(--neutral-50); /* Dark: 800 */
     margin-bottom: 2rem;
-    border-bottom: 4px solid rgba(0,0,0,.12);
     padding: 3rem 2rem 2rem;
     font-weight: var(--fw-bold);
-    filter: var(--shadow);
   }
 
   ul {
@@ -151,8 +156,6 @@
     transition: 1s;
     border-radius: var(--bradius-lg);
     padding: 1rem;
-    filter: var(--shadow);
-    border-bottom: 4px solid rgba(0,0,0,.12);
     background-color: var(--neutral-50); /* Dark: 800 */
   }
 

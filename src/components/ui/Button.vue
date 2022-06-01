@@ -2,7 +2,7 @@
   export default {
     props: [
       'color',
-    ]
+    ],
   }
 </script>
 
@@ -32,8 +32,7 @@
     border-radius: var(--bradius);
     padding: .5rem 2rem;
     color: var(--neutral-50);
-    border-bottom: 4px solid rgba(0,0,0,.12);
-    filter: brightness(1);
+    border-bottom: 5px solid rgba(0,0,0,.12);
   }
 
   button:hover {
