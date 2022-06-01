@@ -100,7 +100,7 @@
 </script>
 
 <template>
-  <div class="text-center">
+  <div>
     <Card class="label">
       <h2>
         {{ question.label }}
@@ -118,7 +118,7 @@
           <div class="letter">
             {{ letter }}
           </div>
-          <div class="answer-text col-span-4">
+          <div class="answer-text">
             {{ label }} 
             <span v-if="step>=2">
               ({{ answeredUsers.length > 0 ? Math.round(100 * (users.length / answeredUsers.length)) : 0 }}%)
@@ -138,12 +138,14 @@
     margin-bottom: 2rem;
     padding: 3rem 2rem 2rem;
     font-weight: var(--fw-bold);
+    text-align: center;
   }
 
   ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
+    text-align: center;
   }
 
   .answer {
@@ -164,6 +166,10 @@
     width: 4rem;
     line-height: 4rem;
     font-weight: var(--fw-bold);
+  }
+
+  .answer-text {
+    grid-column: span 4;
   }
 
   .answer.right {
