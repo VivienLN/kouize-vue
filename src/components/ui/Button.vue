@@ -32,7 +32,7 @@
     border-radius: var(--bradius);
     padding: .5rem 2rem;
     color: var(--neutral-50);
-    border-bottom: 4px solid transparent;
+    border-bottom: 4px solid rgba(0,0,0,.12);
     filter: brightness(1);
   }
 
@@ -46,16 +46,13 @@
 
   button.primary {
     background-color: var(--primary-500);
-    border-color: var(--primary-600);
   }
 
   button.secondary {
     background-color: var(--secondary-500);
-    border-color: var(--secondary-600);
   }
 
   button.neutral {
     background-color: var(--neutral-300);
-    border-color: var(--neutral-400);
   }
 </style>

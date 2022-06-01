@@ -96,20 +96,19 @@
 
 <template>
   <div class="text-center">
-    <h2 class="rounded-md text-xl text-primary-700 p-4 pt-6 drop-shadow-lg bg-gray-50 mb-4 font-bold border-b-6 border-gray-200 dark:text-primary-300 dark:bg-gray-800 dark:border-gray-900">
+    <h2>
       {{ question.label }}
     </h2>
-    <ul v-if="step>=1" class="grid grid-cols-2 gap-3">
+    <ul v-if="step>=1">
       <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
         <div
-          class="transition duration-1000 rounded-md p-2 drop-shadow-lg grid grid-cols-6 items-center gap-1 border-b-6 h-full"
+          class="answer"
           :class="{
-            ['bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-900']: (step < 2 || !is_right),
-            ['bg-correct-400 border-correct-500 dark:bg-correct-600 dark:border-correct-700 font-bold']: (step>= 2 && is_right),
-            'opacity-40': (step>= 2 && !is_right)
+            right: (step>= 2 && is_right),
+            wrong: (step >= 2 && !is_right)
           }"
         >
-          <div class="letter bg-gray-200 font-bold rounded-md dark:bg-gray-900" :class="{'text-correct-600 dark:text-correct-500':(step>= 2 && is_right)}">
+          <div class="letter">
             {{ letter }}
           </div>
           <div class="answer-text col-span-4">
@@ -125,9 +124,58 @@
 </template>
 
 <style scoped>
+  h2 {
+    border-radius: var(--bradius-lg);
+    font-size: var(--fs-xl);
+    color: var(--primary-700); /* Dark: 300 */
+    background-color: var(--neutral-50); /* Dark: 800 */
+    margin-bottom: 2rem;
+    border-bottom: 4px solid rgba(0,0,0,.12);
+    padding: 3rem 2rem 2rem;
+    font-weight: var(--fw-bold);
+    filter: var(--shadow);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .answer {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: .5rem;
+    align-items: center;
+    height: 100%;
+    transition: 1s;
+    border-radius: var(--bradius-lg);
+    padding: 1rem;
+    filter: var(--shadow);
+    border-bottom: 4px solid rgba(0,0,0,.12);
+    background-color: var(--neutral-50); /* Dark: 800 */
+  }
+
   .letter {
+    background-color: var(--neutral-100);
+    border-radius: var(--bradius-lg);
     height: 4rem;
     width: 4rem;
     line-height: 4rem;
+    font-weight: var(--fw-bold);
   }
+
+  .answer.right {
+    background-color: #34d399;
+  }
+
+  .answer.right .letter {
+    color: #10b981;
+  }
+
+  .answer.wrong {
+    opacity: .4;
+  }
+  
+
 </style>

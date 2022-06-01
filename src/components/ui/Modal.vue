@@ -51,7 +51,7 @@
     padding: 2rem;
     border-radius: var(--bradius-lg);
     background-color: var(--neutral-50); /* Dark: 800 */
-    border-bottom: 4px solid var(--neutral-200); /* Dark: 900 */
+    border-bottom: 4px solid rgba(0,0,0,.1);
     filter: var(--shadow);
   }
   header {
