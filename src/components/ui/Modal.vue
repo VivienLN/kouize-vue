@@ -52,7 +52,6 @@
     bottom: 2rem;
     padding: 2rem;
     border-radius: var(--bradius-lg);
-    background-color: var(--neutral-50); /* Dark: 800 */
   }
   header {
     display: flex;
@@ -62,7 +61,7 @@
   }
   h2 {
     font-weight: var(--fw-bold);
-    color: var(--primary-700); /* Dark: 300 */
+    color: var(--title-color);
   }
   .content {
     padding: .5rem 0;

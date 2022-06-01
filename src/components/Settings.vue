@@ -71,7 +71,6 @@
     align-items: center;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     font-size: var(--fs-tiny);
-    color: var(--neutral-900); /* Dark: 50 */
   }
 
   label {
@@ -84,11 +83,11 @@
 
   input, select, textarea {
     width: 100%;
-    background-color: var(--neutral-50);
-    border: 2px solid var(--neutral-200);
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-border);
     border-radius: var(--bradius);
     padding: .5rem 1rem;
-    outline-color: var(--primary-500);
+    outline-color: var(--secondary-color);
   }
 
   .settings > div:last-child {

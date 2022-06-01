@@ -75,7 +75,7 @@
     height: 10rem;
     margin: 0 auto;
     transform: rotate(-90deg);
-    fill: var(--neutral-50); /* Dark: 800 */
+    fill: var(--card-bg);
   }
   .circle circle {
     transition: stroke-dashoffset .8s ease-out;
@@ -101,7 +101,7 @@
     justify-content: center;
     filter: var(--shadow);
     transform: scale(.75);
-    color: var(--primary-500); /* Dark: 300 */
+    color: var(--timer-color);
   }
 
   .timer.started {

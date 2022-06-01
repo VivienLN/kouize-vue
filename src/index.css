@@ -3,33 +3,12 @@
 @tailwind utilities;
 
 :root {
-    /* Colors */
-    /* --primary-300: #a5b4fc; */
-    --primary-500: #6366f1;
-    /* --primary-600: #4f46e5; */
-    --primary-700: #4338ca;
-
-	/* --secondary-400: #38bdf8; */
-	--secondary-500: #0ea5e9;
-	/* --secondary-600: #0284c7;
-	--secondary-700: #0369a1; */
-
-    --neutral-50: #f9fafb;
-    --neutral-100: #f3f4f6;
-    --neutral-200: #e5e7eb;
-    --neutral-300: #d1d5db;
-    /* --neutral-400: #9ca3af; */
-    /* --neutral-500: #6b7280;
-    --neutral-700: #374151;
-    --neutral-800: #1f2937; */
-    --neutral-900: #111827;
-
     /* Fonts */
     --ff-base: 'Signika', sans-serif;
     --ff-mono: monospace;
 
     --fs-tiny: 1rem;
-    --fs-small: 1.4rem;
+    --fs-small: 1.6rem;
     --fs-base: 2rem;
     --fs-xl: 2.8rem;
 
@@ -42,11 +21,29 @@
 
     /* Others */
     --shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+
+    /* Theme colors */
+    --primary-color: #6366f1;
+    --secondary-color: #0ea5e9;
+    --body-bg: #e5e7eb;
+    --card-bg: #f9fafb;
+    --leaderboard-bg: #f3f4f6; /* => alt-bg ?? */
+    --font-color: #111827;
+    --title-color: #4338ca;
+    --button-bg: var(--primary-color); 
+    --button-secondary-bg: var(--secondary-color);
+    --button-neutral-bg: #d1d5db;
+    --button-color: #fff;
+    --input-bg: #fff;
+    --input-border: #e5e7eb;
+    --timer-color: var(--primary-color);
+    --timer-finished-color: #e11d48;
+    --answer-right-bg: #34d399;
 }
 
 body {
-    background-color: var(--neutral-200);
-    color: var(--netral-900);
+    background-color: var(--body-bg);
+    color: var(--font-color);
     font-family: var(--ff-base);
     font-weight: var(--fw-normal);
     font-size: var(--fs-base);

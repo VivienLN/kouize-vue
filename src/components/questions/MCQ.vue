@@ -134,8 +134,7 @@
   .label {
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
-    color: var(--primary-700); /* Dark: 300 */
-    background-color: var(--neutral-50); /* Dark: 800 */
+    color: var(--title-color);
     margin-bottom: 2rem;
     padding: 3rem 2rem 2rem;
     font-weight: var(--fw-bold);
@@ -156,11 +155,10 @@
     transition: 1s;
     border-radius: var(--bradius-lg);
     padding: 1rem;
-    background-color: var(--neutral-50); /* Dark: 800 */
   }
 
   .letter {
-    background-color: var(--neutral-100);
+    background-color: var(--leaderboard-bg);
     border-radius: var(--bradius-lg);
     height: 4rem;
     width: 4rem;
@@ -169,15 +167,15 @@
   }
 
   .answer.right {
-    background-color: #34d399;
+    background-color: var(--answer-right-bg);
   }
 
   .answer.right .letter {
-    color: #10b981;
+    color: var(--answer-right-bg);
   }
 
   .answer.wrong {
-    opacity: .4;
+    opacity: .6;
   }
   
 

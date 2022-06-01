@@ -28,11 +28,3 @@
     <option value="light">Clair</option>
   </select>
 </template>
-
-<style scoped>
-  select {
-    border: 1px solid var(--neutral-300); /* Dark: 900 */
-    background-color: var(--neutral-50); /* Dark: 900 */
-    color: var(--neutral-900); /* Dark: 50 */
-  }
-</style>

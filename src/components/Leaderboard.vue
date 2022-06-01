@@ -51,7 +51,7 @@
           {{ userName }}
         </div>
         <div>
-          {{ score }} {{ score > 1 ? 'points' : 'point' }}
+          {{ score }}
         </div>
       </li>
     </ul>
@@ -60,21 +60,20 @@
 </template>
 
 <style scoped>
-  ul {
-    color: var(--neutral-900);
-  }
   li {
+    font-size: var(--fs-small);
     padding: 1rem 2rem;
     border-radius: var(--bradius-lg);
     margin-bottom: 1.5rem;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 1rem;
-    background-color: var(--neutral-100); /* neutral-900 */
+    align-items: center;
+    background-color: var(--leaderboard-bg);
   }
   li svg {
     margin: 0 auto;
-    height: 3rem;
+    height: 4rem;
   }
   .rank-1 {
     color: #e9b040;
@@ -87,6 +86,8 @@
   }
   li > :nth-child(1) {
     grid-column: span 1;
+    text-align: center;
+    font-weight: var(--fw-bold);
   }
   li > :nth-child(2) {
     grid-column: span 9;
@@ -94,5 +95,6 @@
   li > :nth-child(3) {
     grid-column: span 2;
     text-align: right;
+    opacity: .7;
   }
 </style>

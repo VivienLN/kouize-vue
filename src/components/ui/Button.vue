@@ -31,7 +31,7 @@
     transition: .4s;
     border-radius: var(--bradius);
     padding: .5rem 2rem;
-    color: var(--neutral-50);
+    color: var(--button-color);
     border-bottom: 5px solid rgba(0,0,0,.12);
   }
 
@@ -44,14 +44,14 @@
   }
 
   button.primary {
-    background-color: var(--primary-500);
+    background-color: var(--button-bg);
   }
 
   button.secondary {
-    background-color: var(--secondary-500);
+    background-color: var(--button-secondary-bg);
   }
 
   button.neutral {
-    background-color: var(--neutral-300);
+    background-color: var(--button-neutral-bg);
   }
 </style>
