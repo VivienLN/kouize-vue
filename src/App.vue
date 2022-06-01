@@ -160,7 +160,7 @@
         @click="showModal('showSettings')"
       >
         <CogIcon />
-        Settings
+        Réglages
       </Button>
     </footer>
   </main>
