@@ -87,7 +87,10 @@
     border: 2px solid var(--input-border);
     border-radius: var(--bradius);
     padding: .5rem 1rem;
-    outline-color: var(--secondary-color);
+  }
+
+  input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--secondary-color);
   }
 
   .settings > div:last-child {
