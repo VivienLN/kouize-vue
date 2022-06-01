@@ -9,15 +9,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      window.updateThemeMode = function() {
-        if (localStorage.theme_mode === 'dark' || (!('theme_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
+      // Theme management, inline in `head` to avoid FOUC
+      // Theme List
+      window.themes = {
+        'kouize-light': 'Kouize Light',
+        'kouize-dark': 'Kouize Dark',
+      };
+
+      // Get theme from localstorage or OS preferences
+      window.getTheme = function() {
+        // Theme set in localstorage
+        if('theme' in localStorage) {
+          return localStorage.theme;
         }
+        // No theme set, but OS preference set
+        let defaultLight = 'kouize-light';
+        let defaultDark = 'kouize-dark';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? defaultDark : defaultLight;
       }
-      window.updateThemeMode();
+
+      // Add a classe to root element corresponding to the theme
+      window.updateTheme = function() {
+        let theme = getTheme();
+        var themeClasses = [];
+        document.documentElement.classList.remove(...Object.keys(window.themes).map(key => `theme-${key}`));
+        document.documentElement.classList.add(`theme-${theme}`);
+      }
+
+      // Update on load
+      window.updateTheme();
     </script>
   </head>
   <body>

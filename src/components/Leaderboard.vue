@@ -69,20 +69,20 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 1rem;
     align-items: center;
-    background-color: var(--leaderboard-bg);
+    background-color: var(--alt-bg);
   }
   li svg {
     margin: 0 auto;
     height: 4rem;
   }
   .rank-1 {
-    color: #e9b040;
+    color: #ecc741;
   }
   .rank-2 {
-    color: #94a3b8;
+    color: #a2b2c9;
   }
   .rank-3 {
-    color: #da9155;
+    color: #d89475;
   }
   li > :nth-child(1) {
     grid-column: span 1;

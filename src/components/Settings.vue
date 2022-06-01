@@ -1,6 +1,6 @@
 <script>
   import Button from './ui/Button.vue';
-  import DarkModeSelect from './ui/DarkModeSelect.vue';
+  import ThemeSelect from './ui/ThemeSelect.vue';
   import DefaultSettings from '../utils/DefaultSettings';
   import JSON5 from 'json5';
   import { SaveIcon } from '@heroicons/vue/solid';
@@ -11,7 +11,7 @@
     ],
     components: {
       Button,
-      DarkModeSelect,
+      ThemeSelect,
       SaveIcon,
     },
 
@@ -48,9 +48,9 @@
       <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
     </div>
 
-    <label for="settings-thememode">Mode sombre / clair</label>
+    <label for="settings-theme">Thème</label>
     <div>
-      <DarkModeSelect id="settings-thememode" />
+      <ThemeSelect id="settings-theme" />
     </div>
 
     <label for="settings-question">Questions</label>
@@ -68,13 +68,13 @@
   .settings {
     display: grid;
     gap: 1rem;
-    align-items: center;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     font-size: var(--fs-tiny);
   }
 
   label {
     font-weight: var(--fw-bold);
+    padding: .5rem 0;
   }
 
   label + div {

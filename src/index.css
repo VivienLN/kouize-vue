@@ -27,10 +27,10 @@
     --secondary-color: #0ea5e9;
     --body-bg: #e5e7eb;
     --card-bg: #f9fafb;
-    --leaderboard-bg: #f3f4f6; /* => alt-bg ?? */
+    --alt-bg: #f3f4f6;
     --font-color: #111827;
     --title-color: #4338ca;
-    --button-bg: var(--primary-color); 
+    --button-bg: var(--primary-color);
     --button-secondary-bg: var(--secondary-color);
     --button-neutral-bg: #d1d5db;
     --button-color: #fff;

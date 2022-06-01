@@ -158,7 +158,7 @@
   }
 
   .letter {
-    background-color: var(--leaderboard-bg);
+    background-color: var(--alt-bg);
     border-radius: var(--bradius-lg);
     height: 4rem;
     width: 4rem;
