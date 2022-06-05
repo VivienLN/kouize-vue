@@ -1,6 +1,7 @@
+/* @import './reset.css'; */
+
 :root {
     /* Fonts */
-    --ff-base: 'Signika', sans-serif;
     --ff-mono: monospace;
 
     --fs-tiny: 1rem;
@@ -132,10 +133,18 @@
     --answer-right-bg: #d4c433;
 }
 
+.font_family-Signika {font-family: 'Signika', sans-serif; }
+.font_family-Comfortaa {font-family: 'Comfortaa', sans-serif; }
+.font_family-Grandstander {font-family: 'Grandstander', sans-serif; }
+.font_family-Mali {font-family: 'Mali', sans-serif; }
+.font_family-Lora {font-family: 'Lora', sans-serif; }
+.font_family-Roboto {font-family: 'Roboto', sans-serif; }
+.font_family-Saira {font-family: 'Saira', sans-serif; }
+.font_family-Tillana {font-family: 'Tillana', sans-serif; }
+
 body {
     background-color: var(--body-bg);
     color: var(--font-color);
-    font-family: var(--ff-base);
     font-weight: var(--fw-normal);
     font-size: var(--fs-base);
 }

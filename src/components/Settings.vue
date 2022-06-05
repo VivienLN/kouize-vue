@@ -1,6 +1,7 @@
 <script>
   import Button from './ui/Button.vue';
   import ThemeSelect from './ui/ThemeSelect.vue';
+  import FontSelect from './ui/FontSelect.vue';
   import DefaultSettings from '../utils/DefaultSettings';
   import JSON5 from 'json5';
   import { SaveIcon } from '@heroicons/vue/solid';
@@ -12,6 +13,7 @@
     components: {
       Button,
       ThemeSelect,
+      FontSelect,
       SaveIcon,
     },
 
@@ -51,6 +53,11 @@
     <label for="settings-theme">Thème</label>
     <div>
       <ThemeSelect id="settings-theme" />
+    </div>
+
+    <label for="settings-font">Police</label>
+    <div>
+      <fontSelect id="settings-font" />
     </div>
 
     <label for="settings-question">Questions</label>

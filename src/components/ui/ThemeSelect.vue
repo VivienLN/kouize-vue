@@ -2,7 +2,7 @@
   export default {
     data() {
       return {
-        themes: window.themes
+        themes: THEMES
       };
     },
     computed: {
@@ -16,7 +16,7 @@
           } else {
             localStorage.removeItem('theme');
           }
-          window.updateTheme();
+          window.updateAppearance();
         }
       }
     },
