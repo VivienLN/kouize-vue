@@ -74,7 +74,7 @@
 <style scoped>
   .settings {
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     font-size: var(--fs-tiny);
   }
