@@ -1,35 +1,35 @@
 <script>
+  import Selector from './Selector.vue';
+
   export default {
+    components: {
+      Selector,
+    },
     data() {
       return {
-        fonts: FONT_FAMILIES
+        fonts: Object.fromEntries(FONT_FAMILIES.map(item => [item, item])),
+        fontClasses: Object.fromEntries(FONT_FAMILIES.map(item => [item, `font_family-${item}`])),
+        defaultFont: window.getFontFamily(),
       };
     },
-    computed: {
-      font: {
-        get() {
-          return window.getFontFamily() ?? window.FONT_FAMILY_DEFAULT;
-        },
-        set(value) {
-          if(value !== '') {
-            localStorage.font_family = value;
-          } else {
-            localStorage.removeItem('font_family');
-          }
-          window.updateAppearance();
+    methods: {
+      updateFont(value) {
+        if(value !== '') {
+          localStorage.font_family = value;
+        } else {
+          localStorage.removeItem('font_family');
         }
+        window.updateAppearance();
       }
     },
   }
 </script>
 
 <template>
-  <select
-    v-model="font"
-    v-bind="$attrs"
-  >
-    <template v-for="(fontName) in fonts">
-      <option :value="fontName" :class="`font_family-${fontName}`">{{ fontName }}</option>
-    </template>
-  </select>
+  <Selector 
+    :values="fonts" 
+    :defaultValue="defaultFont"
+    @selected="updateFont"
+    :customClasses="this.fontClasses"
+  />
 </template>
