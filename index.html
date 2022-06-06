@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Grandstander:wght@500;700&family=Mali:wght@500;700&family=Lora:wght@500;700&family=Roboto:wght@500;700&family=Saira:wght@500;700&family=Tillana:wght@500;700&family=Signika:wght@500;700&display=swap" rel="stylesheet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script>
+      // Theme management, inline in `head` to avoid FOUC
+      const THEMES = {
+        'kouize-light': 'Kouize Light',
+        'kouize-dark': 'Kouize Dark',
+        'chocobo': 'Chocobo (Light)',
+        'kirby': 'Kirby (Light)',
+        'cereza': 'Cereza (Dark)',
+        'jensen': 'Jensen (Dark)',
+      };
+      const THEME_DEFAULT_LIGHT = 'kouize-light';
+      const THEME_DEFAULT_DARK = 'kouize-light';
+      const FONT_FAMILIES = [
+        'Comfortaa',
+        'Grandstander',
+        'Lora',
+        'Mali',
+        'Roboto',
+        'Saira',
+        'Signika',
+        'Tillana',
+      ];
+      const FONT_FAMILY_DEFAULT = 'Signika';
+
+      function getTheme() {
+        // Theme set in localstorage
+        if('theme' in localStorage) {
+          return localStorage.theme;
+        }
+        // No theme set, but OS preference set
+        let defaultLight = 'kouize-light';
+        let defaultDark = 'kouize-dark';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME_DEFAULT_DARK : THEME_DEFAULT_LIGHT;
+      }
+
+      function getFontFamily() {
+        if('font_family' in localStorage) {
+          return localStorage.font_family;
+        }
+        return FONT_FAMILY_DEFAULT;
+      }
+
+      // Update theme and font family with classes
+      function updateAppearance() {
+        // Theme
+        let theme = getTheme();
+        document.documentElement.classList.remove(...Object.keys(THEMES).map(key => `theme-${key}`));
+        document.documentElement.classList.add(`theme-${theme}`);
+
+        // Font
+        let fontFamily = getFontFamily();
+        document.documentElement.classList.remove(...FONT_FAMILIES.map(fontName => `font_family-${fontName}`));
+        document.documentElement.classList.add(`font_family-${fontFamily}`);
+      }
+      
+      // Update on load
+      window.updateAppearance();
+    </script>
+    <script type="module" crossorigin src="/assets/index.8220a9ea.js"></script>
+    <link rel="stylesheet" href="/assets/index.3057b60d.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    
+  </body>
+</html>
