@@ -42,3 +42,33 @@ Les questions sont à lister au format JSON. Un exemple de question est présent
 * type : Pour le moment, seul "mcq" est valide
 * label : l'intitulé de la question
 * answers : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
+
+## Deploiement
+Le Kouize est actuellement déployé via les github pages. 
+Il est impossible de faire en sorte que les github pages pointent vers le dossier `dist`, il a donc fallu ruser un peu.
+
+La branche `gh-pages` a été créée, et contient uniquement le dossier dist. Ce dossier doit donc contenir son propre repo local.
+
+*Note: Il a été envisager de simplifier le process avec [les sous-modules git](https://git-scm.com/book/fr/v2/Utilitaires-Git-Sous-modules). En attendant de savoir si ça apportera plus de problèmes ou de solutions, et vu qu'une seule personne déploie pour le moment (et que ça restera surement comme ça), on s'en passe.*
+
+Références :
+* [Documentation github pages](https://docs.github.com/en/pages)
+* [Documentation vite](https://vitejs.dev/guide/static-deploy.html#github-pages)
+
+### Configuration intiale
+```
+cd dist
+git init
+git remote add origin https://github.com/VivienLN/kouize-vue.git
+git pull origin gh-pages
+```
+
+### Déploiement
+```
+npm run build
+cd dist
+git add .
+git commit -m "deploy"
+git tag deploy-vXX.XX.XX
+git push --tags
+```
