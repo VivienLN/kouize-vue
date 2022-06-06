@@ -65,7 +65,12 @@ git pull origin gh-pages
 
 ### Déploiement
 ```
+# avec docker
+docker-compose run app npm run build
+# sans docker
 npm run build
+
+# deployer
 cd dist
 git add .
 git commit -m "deploy"
