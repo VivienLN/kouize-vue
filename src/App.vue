@@ -48,6 +48,7 @@
 
     methods: {
       nextStep() {
+        this.hideAllModals();
         if(this.question === null) {
           this.setQuestion(0);
         } else {
@@ -92,10 +93,13 @@
       },
       showModal(variableName) {
         let newValue = !this[variableName];
+        this.hideAllModals();
+        this[variableName] = newValue;
+      },
+      hideAllModals() {
         this.showSettings = false;
         this.showLeaderboardSession = false;
         this.showLeaderboardGlobal = false;
-        this[variableName] = newValue;
       }
     },
   }
