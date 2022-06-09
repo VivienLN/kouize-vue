@@ -3,6 +3,7 @@
   import Helpers from '../../utils/Helpers';
   import Card from '../ui/Card.vue';
   import Timer from '../Timer.vue';
+  import FuzzySet from 'fuzzyset'
 
   // Steps:
   // 0: show the question
@@ -33,6 +34,10 @@
     computed: {
       timerDuration() {
         return this.question?.timer ?? this.settings.timer;
+      },
+      answers() {
+        let answers = this.question.answers.map(a => Helpers.canonizeAnswer(a));
+        return FuzzySet(answers);
       }
     },
 
@@ -57,14 +62,10 @@
           return;
         }
 
-        // TODO: fuzzy answer
+        // Use fuzzy search to add a (verry little) tolerance towards typos
         let answer = Helpers.canonizeAnswer(message);
-        let cleanedAnswers = this.question.answers.map(a => Helpers.canonizeAnswer(a));
-
-        console.log(cleanedAnswers);
-
-        if(cleanedAnswers.includes(answer)) {
-          console.log('good answer: ' + answer);
+        if(this.answers.get(answer, null, .9)) {
+          console.log(`good answer from ${user}: ${answer}`);
           this.winners.push(user);
         }
       });
