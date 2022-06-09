@@ -1,5 +1,4 @@
 <script>
-  import MCQ from './components/questions/MCQ.vue';
   import Settings from './components/Settings.vue';
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
@@ -7,10 +6,11 @@
   import { FastForwardIcon, CogIcon } from '@heroicons/vue/solid';
   import PrizeIcon from './components/ui/icons/PrizeIcon.vue';
   import Modal from './components/ui/Modal.vue';
+  import Question from './components/Question.vue';
   
   export default {
     components: {
-      MCQ,
+      Question,
       Modal,
       Settings,
       Leaderboard,
@@ -95,7 +95,7 @@
   <!-- Game -->
     <div class="game">
       <!-- Questions -->
-      <MCQ 
+      <Question
         v-if="question" 
         :question="question" 
         :step="questionStep" 
