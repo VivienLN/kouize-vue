@@ -44,7 +44,7 @@
       <input id="settings-channel" v-model="channel" />
     </div>
 
-    <label for="settings-timer">Durée des questions (secondes)</label>
+    <label for="settings-timer">Durée des questions par défaut (secondes)</label>
     <div>
       <input id="settings-timer" v-model="timer" type="number" min="0" step="5" />
       <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>

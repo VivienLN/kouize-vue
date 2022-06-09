@@ -29,6 +29,7 @@ Les questions sont à lister au format JSON. Un exemple de question est présent
   {
     type: 'mcq',
     label: 'Comment dit-on "Groenland" en groenlandais ?',
+    timer: 10,
     answers: [
       'Kalaallit Nunaat',
       'Grønland',
@@ -41,6 +42,7 @@ Les questions sont à lister au format JSON. Un exemple de question est présent
 
 * type : Pour le moment, seul "mcq" est valide
 * label : l'intitulé de la question
+* timer (optionnel) : La durée du compte à rebours affiché au dessus de la question. Si non fournie, la durée est celle spécifiée dans les reglages.
 * answers : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
 
 ## Deploiement
