@@ -1,5 +1,4 @@
 <script>
-  import Helpers from '../../utils/Helpers';
   import ScoresHelpers from '../../utils/ScoresHelper';
   import Card from '../ui/Card.vue';
   import Timer from '../Timer.vue';
@@ -54,16 +53,15 @@
           return;
         }
         // User already gave an answer for this question
-        let username = Helpers.sanitizeUser(user);
-        if(this.answeredUsers.includes(username)) {
+        if(this.answeredUsers.includes(user)) {
           return;
         }
         // Save user name in the answer they chose
         console.log('onSingleLetterCallback, letter: ' + letter);
         this.computedAnswers.forEach(answer => {
           if(answer.letter == letter.toUpperCase()) {
-            answer.users.push(username);
-            this.answeredUsers.push(username);
+            answer.users.push(user);
+            this.answeredUsers.push(user);
           }
         });
       });
