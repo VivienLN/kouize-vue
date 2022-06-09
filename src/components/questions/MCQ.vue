@@ -2,6 +2,7 @@
   import Helpers from '../../utils/Helpers';
   import ScoresHelpers from '../../utils/ScoresHelper';
   import Card from '../ui/Card.vue';
+  import Timer from '../Timer.vue';
 
   // Steps:
   // 0: show the question
@@ -14,18 +15,36 @@
     props: [
       'question',
       'step',
-      'chat'
+      'chat',
+      'settings',
     ],
 
     components: {
       Card,
+      Timer,
     },
 
     data() {      
       return {
+        timerStarted: false,
         computedAnswers: [],
         answeredUsers: [],
       }
+    },
+
+    computed: {
+      timerDuration() {
+        return this.question?.timer ?? this.settings.timer;
+      }
+    },
+
+    methods: {
+      startTimer() {
+        this.timerStarted = true;
+      },
+      stopTimer() {
+        this.timerStarted = false;
+      },
     },
 
     mounted() {
@@ -76,6 +95,7 @@
       step(newStep, oldStep) {
         // Start question (usually to start a timer)
         if(newStep == 1) {
+          this.startTimer();
           this.$emit('onStart');
         }
         // Show right answer
@@ -88,6 +108,7 @@
             ScoresHelpers.incrementUsersScores(answer.users, points);
           });
           // Event
+          this.stopTimer();
           this.$emit('onShowRightAnswer');
         }
         // Finish question
@@ -101,36 +122,45 @@
 
 <template>
   <div>
-    <Card class="label">
-      <h2>
-        {{ question.label }}
-      </h2>
-    </Card>
-    <ul v-if="step>=1">
-      <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
-        <Card
-          class="answer"
-          :class="{
-            right: (step>= 2 && is_right),
-            wrong: (step >= 2 && !is_right)
-          }"
-        >
-          <div class="letter">
-            {{ letter }}
-          </div>
-          <div class="answer-text">
-            {{ label }} 
-            <span v-if="step>=2">
-              ({{ answeredUsers.length > 0 ? Math.round(100 * (users.length / answeredUsers.length)) : 0 }}%)
-            </span>
-          </div>
-        </Card>
-      </li>
-    </ul>
+    <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer" />
+    <div>
+      <Card class="label">
+        <h2>
+          {{ question.label }}
+        </h2>
+      </Card>
+      <ul v-if="step>=1">
+        <li v-for="({ users, letter, label, is_right }, index) in computedAnswers">
+          <Card
+            class="answer"
+            :class="{
+              right: (step>= 2 && is_right),
+              wrong: (step >= 2 && !is_right)
+            }"
+          >
+            <div class="letter">
+              {{ letter }}
+            </div>
+            <div class="answer-text">
+              {{ label }} 
+              <span v-if="step>=2">
+                ({{ answeredUsers.length > 0 ? Math.round(100 * (users.length / answeredUsers.length)) : 0 }}%)
+              </span>
+            </div>
+          </Card>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style scoped>
+  .timer {
+    margin-bottom: -2rem;
+    position: relative;
+    z-index: 10;
+  }
+
   .label {
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);

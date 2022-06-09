@@ -73,7 +73,7 @@ npm run build
 # deployer
 cd dist
 git add .
-git commit -m "deploy"
+git commit -m "deploy vXX.XX.XX"
 git tag deploy-vXX.XX.XX
 git push --tags
 ```

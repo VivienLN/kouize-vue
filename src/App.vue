@@ -1,6 +1,5 @@
 <script>
   import MCQ from './components/questions/MCQ.vue';
-  import Timer from './components/Timer.vue';
   import Settings from './components/Settings.vue';
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
@@ -12,7 +11,6 @@
   export default {
     components: {
       MCQ,
-      Timer,
       Modal,
       Settings,
       Leaderboard,
@@ -27,17 +25,10 @@
         question: null,
         questionIndex: 0,
         questionStep: 0,
-        timerStarted: false,
         chat: Chat,
         showSettings: false,
         showLeaderboardSession: false,
         showLeaderboardGlobal: false,
-      }
-    },
-
-    computed: {
-      timerDuration() {
-        return this.question?.timer ?? this.settings.timer;
       }
     },
 
@@ -62,12 +53,6 @@
       },
       nextQuestion() {
         this.setQuestion(this.questionIndex + 1);
-      },
-      startTimer() {
-        this.timerStarted = true;
-      },
-      stopTimer() {
-        this.timerStarted = false;
       },
       updateSettings() {
         var hasErrors = false;
@@ -110,14 +95,12 @@
   <!-- Game -->
     <div class="game">
       <!-- Questions -->
-      <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer" />
       <MCQ 
         v-if="question" 
         :question="question" 
         :step="questionStep" 
         :chat="chat"
-        @onStart="startTimer" 
-        @onShowRightAnswer="stopTimer" 
+        :settings="settings"
         @onFinished="nextQuestion"
       />
 
@@ -187,12 +170,6 @@
     align-items: stretch;    
     flex-grow: 1;
     padding: 2rem;
-  }
-
-  .timer {
-    margin-bottom: -2rem;
-    position: relative;
-    z-index: 10;
   }
 
   footer {

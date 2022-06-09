@@ -32,7 +32,6 @@
         }, 1000);
       },
       stop() {
-        this.time = 0;
         if(this.timeInterval) {
           clearInterval(this.timeInterval);
         }
