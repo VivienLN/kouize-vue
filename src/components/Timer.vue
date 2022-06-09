@@ -8,7 +8,7 @@
     data() {
       return {
         time: 0,
-        timeInterval: null,
+        timeInterval: null
       };
     },
 
@@ -26,6 +26,7 @@
     methods: {
       start() {
         this.stop();
+        // this.isHidden = this.totalTime > 0;
         this.time = this.totalTime;
         this.timeInterval = setInterval(() => {
           this.time > 0 ? this.time-- : clearInterval(this.timeInterval);
@@ -49,7 +50,8 @@
     class="timer"
     :class="{
       'started': isStarted,
-      'finished': time <= 0
+      'finished': time <= 0,
+      'enabled': this.totalTime > 0,
     }"
   >
     <svg viewBox="0 0 100 100" class="circle">
@@ -103,7 +105,7 @@
     color: var(--timer-color);
   }
 
-  .timer.started {
+  .timer.enabled.started {
     opacity: 1;
     transform: scale(1);
   }

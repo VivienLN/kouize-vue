@@ -42,7 +42,7 @@ Les questions sont à lister au format JSON. Un exemple de question est présent
 
 * type : Pour le moment, seul "mcq" est valide
 * label : l'intitulé de la question
-* timer (optionnel) : La durée du compte à rebours affiché au dessus de la question. Si non fournie, la durée est celle spécifiée dans les reglages.
+* timer (optionnel) : La durée du chrono affiché au dessus de la question. Si la valeur fournie est 0, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les reglages.
 * answers : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
 
 ## Deploiement
