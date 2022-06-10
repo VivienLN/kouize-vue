@@ -102,6 +102,7 @@
         :chat="chat"
         :settings="settings"
         @onFinished="nextQuestion"
+        @onForceNextStep="nextStep"
       />
 
       <!-- Modals -->

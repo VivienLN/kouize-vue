@@ -67,6 +67,9 @@
         if(this.answers.get(answer, null, .9)) {
           console.log(`good answer from ${user}: ${answer}`);
           this.winners.push(user);
+          if(this.winners.length >= this.question.winners) {
+            this.$emit('onForceNextStep');
+          }
         }
       });
     },
@@ -83,7 +86,11 @@
         // Show right answer
         if(newStep == 1) {
           // Save Scores
-          // TODO
+          // If there are 3 winners, first one gets 3 points, 2nd gets 2, etc.
+          this.winners.forEach((username, i) => {
+            let points = this.winners.length - i;
+            ScoresHelpers.incrementUserScore(username, points);
+          });
 
           // Event
           this.stopTimer();

@@ -2,12 +2,16 @@ import JSON5 from 'json5';
 
 export default {
   incrementUsersScores(users, amount = 1) {
+    users.forEach(user => {
+      this.incrementUserScore(user, amount);
+    });
+  },
+
+  incrementUserScore(user, amount = 1) {
     let scoreLists = ['scores_global', 'scores_session'];
     scoreLists.forEach(listName => {
       let scores = this.getScores(listName);
-      users.forEach(user => {
-        scores[user] = parseInt(scores[user] ?? 0) + amount;
-      });
+      scores[user] = parseInt(scores[user] ?? 0) + amount;
       // Save in localStorage
       this.saveScores(listName, scores);
     });
