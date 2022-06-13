@@ -25,36 +25,34 @@ Indiquez le nom de votre chaîne, et le Kouize écoutera votre chat à la recher
 Les questions sont à lister au format JSON. Un exemple de question est présent par défaut :
 
 ```
-[
-  {
-    type: 'mcq',
-    label: 'Comment dit-on "Groenland" en groenlandais ?',
-    timer: 10,
-    answers: [
-      'Kalaallit Nunaat',
-      'Grønland',
-      'Nuukiikaalt',
-      'Guuriitanaak',
-    ],
-  },
-]
+{
+  type: 'mcq',
+  label: 'Comment dit-on "Groenland" en groenlandais ?',
+  timer: 10,
+  answers: [
+    'Kalaallit Nunaat',
+    'Grønland',
+    'Nuukiikaalt',
+    'Guuriitanaak',
+  ],
+},
 ```
 
 Le champ "type" défini de quel type de question il s'agit, et des autres paramètres obligatoires et obligatoire. Voir ci-dessous pour les paramètres des questions selon leur type.
 
-### Question à choix multiples (type "mcq")
+## Question à choix multiples (type "mcq")
 
 Ce sont des questions pour lesquelles les joueurs peuvent choisir entre 4 réponses maximum.
 L'intitulé de la question s'affiche, puis lorsque le streamer clique sur "Suite", les réponses possibles s'affichent. Les viewers peuvent alors répondre dans le chat en tapant "A", "B", "C" ou "D".
 Dès qu'il le souhaite, le streamer peut cliquer sur "Suite" pour afficher la bonne réponse et mettre à jour les scores.
 
-Paramètres :
-* type : Régler sur "mcq"
-* label : l'intitulé de la question
-* timer (optionnel) : La durée du chrono affiché au dessus de la question. Si la valeur fournie est 0, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les reglages.
-* answers : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
+**Paramètres :**
+* `type` : Régler sur `mcq`
+* `label` : l'intitulé de la question
+* `timer` (optionnel) : La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
+* `answers` : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
 
-### Question ouverte (type "open")
+## Question ouverte (type "open")
 
 Ce sont des questions dont la réponse est libre. Les viewers répondent en tapant directement leur réponse dans le chat. Une tolérance est appliquée envers les fautes de frappe, et vous pouvez définir plusieurs réponses valides.
 
@@ -62,16 +60,17 @@ Ce type de question permet aussi de faire des blind tests, des images à reconna
 
 Seuls les premiers joueurs à répondre obtiendront des points, de manière dégressive (le plus rapide obtient le plus de points). Les joueurs peuvent fournir autant de réponses qu'ils le souhaitent.
 
-Paramètres :
-* type : Régler sur "open"
-* label : l'intitulé de la question
-* timer (optionnel) : La durée du chrono affiché au dessus de la question. Si la valeur fournie est 0, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les reglages.
-* answers : tableau contenant la liste des réponses acceptées. La première réponse de la liste est celle qui sera révélée à la fin de la question. Les réponses suivantes peuvent permettre au chat de donner des abréviations ou écritures alternatives. Il n'est pas nécessaire de prendre en compte les accents, ni les fautes de frappe.
-* winners : Le nombre de gagnants. Une fois que suffisamment de joueurs a trouvé la réponse, elle est révélée **automatiquement**. En outre, si par exemple ce nombre est 3, le premier joueur à repondre juste gagnera 3 points, le second 2 points, et le troisième 1 point. Les autres ne gagneront pas de point.
-* show_letters (optionnel) : true ou false. Si true, affiche le nombre de lettres présentes dans la réponse (la première de la liste fournie) en dessous de l'intitulé, un peu à la façon d'un jeu de pendu. Passé la moitié du temps imparti, certaines lettres seront révélées pour faciliter le jeu. Note : si timer est à zero (temps infini), les lettres vides sont bien affichées, mais les lettres ne se révéleront pas.
+**Paramètres :**
+* `type` : Régler sur "open"
+* `label` : l'intitulé de la question
+* `answers` : tableau contenant la liste des réponses acceptées. La première réponse de la liste est celle qui sera révélée à la fin de la question. Les autres réponses peuvent êtres des abréviations ou écritures alternatives. Il n'est pas nécessaire de prendre en compte les accents, ni les fautes de frappe.
+* `winners` : Le nombre de gagnants. Une fois que suffisamment de joueurs ont trouvé la réponse, elle est révélée **automatiquement**. En outre, si par exemple ce nombre est 3, le premier joueur à repondre juste gagnera 3 points, le second 2 points, et le troisième 1 point. Les autres ne gagneront pas de point.
+* `timer` (optionnel) : La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
+* `show_letters` (optionnel) : true ou false. Si true, affiche le nombre de lettres présentes dans la réponse (la première de la liste fournie) en dessous de l'intitulé, un peu à la façon d'un jeu de pendu. Passé la moitié du temps imparti, certaines lettres seront révélées pour faciliter le jeu. Note : si timer est à zero (temps infini), les lettres vides sont bien affichées, mais les lettres ne se révéleront pas.
 
-Exemple de question ouverte :
+**Exemple de question ouverte :**
 ```
+{
   type: 'open',
   label: 'Quel est le jeu zelda avec un ocarina du temps ?',
   winners: 3,
@@ -81,6 +80,7 @@ Exemple de question ouverte :
     'Zelda: Ocarina of Time',
     'Zelda OoT',
   ],
+}
 ```
 
 # Deploiement
