@@ -32,8 +32,22 @@
         localStorage.setItem('channel', this.channel);
         localStorage.setItem('questions', this.questions);
         this.$emit('onSaved');
+      },
+      updateTextareaHeight() {
+        this.$refs.questions.style.height = (this.$refs.questions.scrollHeight + 20) + 'px';
       }
     },
+
+    mounted() {
+      this.updateTextareaHeight();
+    },
+
+    watch: {
+      questions() {
+        this.$refs.questions.style.height = "auto";
+        this.$nextTick(this.updateTextareaHeight);
+      }
+    }
   }
 </script>
 
@@ -60,9 +74,9 @@
       <fontSelect id="settings-font" />
     </div>
 
-    <label for="settings-question">Questions</label>
+    <label for="settings-questions">Questions</label>
     <div>
-      <textarea id="settings-question" cols="80" rows="20" v-model="questions" />
+      <textarea id="settings-questions" cols="80" rows="20" v-model="questions" ref="questions" />
     </div>
 
     <div>
@@ -110,5 +124,6 @@
 
   textarea {
     font-family: var(--ff-mono);
+    font-size: .9em;
   }
 </style>
