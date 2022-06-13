@@ -73,7 +73,7 @@
   }
   li svg {
     margin: 0 auto;
-    height: 4rem;
+    height: 3rem;
   }
   .rank-1 {
     color: #ecc741;
