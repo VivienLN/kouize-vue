@@ -47,6 +47,24 @@
     },
 
     mounted() {
+      // Only keep the 4 first answers, and shuffle them
+      // Also restructure the array a little
+      let letters = ['A', 'B', 'C', 'D'];
+      this.computedAnswers = this.question.answers
+        .slice(0, 4)
+        .map((answer, index) => ({
+          label: answer, 
+          is_right: !!(index === 0),
+          users: [],
+        }))
+        .sort((a, b) => 0.5 - Math.random())
+        .map((answer, index) => ({
+          ...answer,
+          letter: letters[index],
+        }));
+      // Reset users having answered
+      this.answeredUsers = [];
+
       this.chat.onSingleLetter((user, letter) => {
         // Not the time to answer
         if(this.step != 1) {
@@ -68,28 +86,6 @@
     },
 
     watch: {
-      question: {
-        handler() {
-          // Only keep the 4 first answers, and shuffle them
-          // Also restructure the array a little
-          let letters = ['A', 'B', 'C', 'D'];
-          this.computedAnswers = this.question.answers
-            .slice(0, 4)
-            .map((answer, index) => ({
-              label: answer, 
-              is_right: !!(index === 0),
-              users: [],
-            }))
-            .sort((a, b) => 0.5 - Math.random())
-            .map((answer, index) => ({
-              ...answer,
-              letter: letters[index],
-            }));
-          // Reset users having answered
-          this.answeredUsers = [];
-        },
-        immediate: true
-      },
       step(newStep, oldStep) {
         // Start question (usually to start a timer)
         if(newStep == 1) {

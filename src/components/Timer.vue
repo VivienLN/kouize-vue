@@ -29,7 +29,12 @@
         // this.isHidden = this.totalTime > 0;
         this.time = this.totalTime;
         this.timeInterval = setInterval(() => {
-          this.time > 0 ? this.time-- : clearInterval(this.timeInterval);
+          if(this.time > 0) {
+            this.time--;
+            this.$emit('onTick', this.time);
+          } else {
+            clearInterval(this.timeInterval)
+          }
         }, 1000);
       },
       stop() {

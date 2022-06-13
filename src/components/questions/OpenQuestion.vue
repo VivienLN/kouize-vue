@@ -28,6 +28,11 @@
       return {
         timerStarted: false,
         winners: [],
+        letters: this.question.answers[0].split('').map(letter => ({
+          letter: letter,
+          blanked: !!letter.match(/[a-z]/i),
+        })),
+        revealedLettersIndexes: []
       }
     },
 
@@ -38,7 +43,7 @@
       answers() {
         let answers = this.question.answers.map(a => Helpers.canonizeAnswer(a));
         return FuzzySet(answers);
-      }
+      },
     },
 
     methods: {
@@ -48,12 +53,42 @@
       stopTimer() {
         this.timerStarted = false;
       },
+      onTimerTick(time) {
+        // Not the time to reveal a letter yet
+        let halfTime = this.timerDuration / 2;
+        let delay = Math.ceil(halfTime / 3); // Roughly 2 or 3 letters revealed in total
+        if(time > halfTime || time == 0 || time%delay != 0) {
+          return;
+        }
+
+        console.log('reveal', time);
+
+        // All leters have been revelead
+        if(this.revealedLettersIndexes.length >= this.letters.length) {
+          return;
+        }
+        let index = null;
+        do {
+          index = Math.floor(Math.random() * this.letters.length);
+        } while(this.revealedLettersIndexes.includes(index));
+        this.revealedLettersIndexes.push(index);
+        this.letters[index].blanked = false;
+        console.log('reveal letter', index, this.letters[index].letter);
+      }
     },
 
     mounted() {
       // Question starts immediatly
       this.startTimer();
       this.$emit('onStart');
+
+      // Some letters are revealed at the start (punctuation, etc.)
+      // Add them to the revealedLetters array now
+      this.letters.forEach((letter, index) => {
+        if(!letter.blanked) {
+          this.revealedLettersIndexes.push(index);
+        }
+      });
 
       // Chat callback
       this.chat.onMessage((user, message) => {
@@ -75,13 +110,6 @@
     },
 
     watch: {
-      question: {
-        handler() {
-          // Reset users having answered
-          this.answeredUsers = [];
-        },
-        immediate: true
-      },
       step(newStep, oldStep) {
         // Show right answer
         if(newStep == 1) {
@@ -107,7 +135,12 @@
 
 <template>
   <div>
-    <Timer :isStarted="timerStarted" :totalTime="timerDuration" class="timer" />
+    <Timer 
+      :isStarted="timerStarted" 
+      :totalTime="timerDuration" 
+      @onTick="onTimerTick"
+      class="timer" 
+    />
     <div>
       <Card class="label">
         <h2>
@@ -115,6 +148,15 @@
         </h2>
         <p class="answer" v-if="step>=1">
           {{ question.answers[0] }}
+        </p>
+        <p class="answer" v-if="step==0 && question.show_letters">
+          <template v-for="{letter, blanked} in letters">
+            <span class="letter" :class="{'blanked': blanked}">
+              <span class="inside">
+                {{ letter }}
+              </span>
+            </span>
+          </template>
         </p>
       </Card>
     </div>
@@ -144,6 +186,24 @@
     font-size: var(--fs-xl);
     font-weight: var(--fw-bold);
     text-align: center;
+  }
+
+  .letter {
+    display: inline-block;
+    line-height: 1em;
+    height: 1em;
+    min-width: .4em;
+    margin: 0 .1rem;
+    vertical-align: bottom;
+  }
+
+  .blanked {
+    border-bottom: 4px solid var(--font-color);
+    opacity: .7;
+  }
+
+  .blanked .inside {
+    display: none;
   }
   
 

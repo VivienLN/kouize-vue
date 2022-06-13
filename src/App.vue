@@ -96,6 +96,7 @@
     <div class="game">
       <!-- Questions -->
       <Question
+        :key="questionIndex"
         v-if="question" 
         :question="question" 
         :step="questionStep" 
