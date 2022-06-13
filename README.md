@@ -47,10 +47,10 @@ L'intitulé de la question s'affiche, puis lorsque le streamer clique sur "Suite
 Dès qu'il le souhaite, le streamer peut cliquer sur "Suite" pour afficher la bonne réponse et mettre à jour les scores.
 
 **Paramètres :**
-* `type` : Régler sur `mcq`
-* `label` : l'intitulé de la question
-* `timer` (optionnel) : La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
-* `answers` : tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
+* **`type` :** Régler sur `mcq`
+* **`label` :** l'intitulé de la question
+* **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
+* **`answers` :** tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
 
 ## Question ouverte (type "open")
 
@@ -61,12 +61,12 @@ Ce type de question permet aussi de faire des blind tests, des images à reconna
 Seuls les premiers joueurs à répondre obtiendront des points, de manière dégressive (le plus rapide obtient le plus de points). Les joueurs peuvent fournir autant de réponses qu'ils le souhaitent.
 
 **Paramètres :**
-* `type` : Régler sur "open"
-* `label` : l'intitulé de la question
-* `answers` : tableau contenant la liste des réponses acceptées. La première réponse de la liste est celle qui sera révélée à la fin de la question. Les autres réponses peuvent êtres des abréviations ou écritures alternatives. Il n'est pas nécessaire de prendre en compte les accents, ni les fautes de frappe.
-* `winners` : Le nombre de gagnants. Une fois que suffisamment de joueurs ont trouvé la réponse, elle est révélée **automatiquement**. En outre, si par exemple ce nombre est 3, le premier joueur à repondre juste gagnera 3 points, le second 2 points, et le troisième 1 point. Les autres ne gagneront pas de point.
-* `timer` (optionnel) : La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
-* `show_letters` (optionnel) : true ou false. Si true, affiche le nombre de lettres présentes dans la réponse (la première de la liste fournie) en dessous de l'intitulé, un peu à la façon d'un jeu de pendu. Passé la moitié du temps imparti, certaines lettres seront révélées pour faciliter le jeu. Note : si timer est à zero (temps infini), les lettres vides sont bien affichées, mais les lettres ne se révéleront pas.
+* **`type` :** Régler sur "open"
+* **`label` :** l'intitulé de la question
+* **`answers` :** tableau contenant la liste des réponses acceptées. La première réponse de la liste est celle qui sera révélée à la fin de la question. Les autres réponses peuvent êtres des abréviations ou écritures alternatives. Il n'est pas nécessaire de prendre en compte les accents, ni les fautes de frappe.
+* **`winners` :** Le nombre de gagnants. Une fois que suffisamment de joueurs ont trouvé la réponse, elle est révélée **automatiquement**. En outre, si par exemple ce nombre est 3, le premier joueur à repondre juste gagnera 3 points, le second 2 points, et le troisième 1 point. Les autres ne gagneront pas de point.
+* **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
+* **`show_letters` (optionnel) :** `true` ou `false`. Si `true`, affiche le nombre de lettres présentes dans la réponse (la première de la liste fournie) en dessous de l'intitulé, un peu à la façon d'un jeu de pendu. Passé la moitié du temps imparti, certaines lettres seront révélées pour faciliter le jeu. Note : si timer est à zero (temps infini), les lettres vides sont bien affichées, mais les lettres ne se révéleront pas.
 
 **Exemple de question ouverte :**
 ```
