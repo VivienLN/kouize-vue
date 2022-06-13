@@ -160,13 +160,13 @@
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--title-color);
-    margin-bottom: 1rem;
     padding: 2rem;
     font-weight: var(--fw-bold);
     text-align: center;
   }
 
   ul {
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;

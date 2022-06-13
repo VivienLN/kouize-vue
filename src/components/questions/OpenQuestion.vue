@@ -4,6 +4,7 @@
   import Card from '../ui/Card.vue';
   import Timer from '../Timer.vue';
   import FuzzySet from 'fuzzyset'
+  import PrizeIcon from '../ui/icons/PrizeIcon.vue';
 
   // Steps:
   // 0: show the question
@@ -22,6 +23,7 @@
     components: {
       Card,
       Timer,
+      PrizeIcon,
     },
 
     data() {      
@@ -160,6 +162,15 @@
           </template>
         </p>
       </Card>
+      <div class="winners" v-if="(step>=1)">
+        <Card v-for="(username, index) in winners.slice(0, 3)" class="winner-card">
+          <div>
+            <PrizeIcon :class="`rank-${(index+1)}`" />
+          </div>
+          {{ username }}
+        </Card>
+        
+      </div>
     </div>
   </div>
 </template>
@@ -204,6 +215,36 @@
 
   .blanked .inside {
     display: none;
+  }
+
+  .winners {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns:repeat(auto-fit, minmax(30% , 1fr));
+  }
+
+  .winner-card {
+    border-radius: var(--bradius-lg);
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .winner-card svg {
+    margin: 0 auto;
+    height: 2rem;
+    margin-right: .5rem;
+  }
+  .rank-1 {
+    color: #ecc741;
+  }
+  .rank-2 {
+    color: #a2b2c9;
+  }
+  .rank-3 {
+    color: #d89475;
   }
   
 
