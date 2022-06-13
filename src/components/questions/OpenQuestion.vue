@@ -162,7 +162,7 @@
           </template>
         </p>
       </Card>
-      <div class="winners" v-if="(step>=1)">
+      <div class="winners" v-if="(step>=1) && winners.length > 0">
         <Card v-for="(username, index) in winners.slice(0, 3)" class="winner-card">
           <div>
             <PrizeIcon :class="`rank-${(index+1)}`" />
