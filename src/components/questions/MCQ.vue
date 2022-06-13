@@ -98,7 +98,8 @@
           // Update even user that has not answered right, but with 0 points
           // to ensure they are saved in leaderboard
           this.computedAnswers.forEach(answer => {
-            let points = answer.is_right ? 1 : 0;
+            let basePoints = this.question?.points ?? 1;
+            let points = answer.is_right ? basePoints : 0;
             ScoresHelpers.incrementUsersScores(answer.users, points);
           });
           // Event

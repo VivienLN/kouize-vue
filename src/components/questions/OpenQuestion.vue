@@ -116,7 +116,8 @@
           // Save Scores
           // If there are 3 winners, first one gets 3 points, 2nd gets 2, etc.
           this.winners.forEach((username, i) => {
-            let points = this.winners.length - i;
+            let multiplier = this.question?.points ?? 1;
+            let points = (this.winners.length - i) * multiplier;
             ScoresHelpers.incrementUserScore(username, points);
           });
 
