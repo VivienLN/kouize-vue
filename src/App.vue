@@ -127,7 +127,7 @@
     <footer>
       <Button @click="nextStep" color="primary">
         <FastForwardIcon />
-        Next
+        Suite
       </Button>
 
       <Button 
