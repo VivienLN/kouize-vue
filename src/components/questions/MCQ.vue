@@ -150,7 +150,7 @@
 
 <style scoped>
   .timer {
-    margin-bottom: -2rem;
+    margin-bottom: -1.5rem;
     position: relative;
     z-index: 10;
   }
@@ -159,8 +159,8 @@
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--title-color);
-    margin-bottom: 2rem;
-    padding: 3rem 2rem 2rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
     font-weight: var(--fw-bold);
     text-align: center;
   }
@@ -168,7 +168,7 @@
   ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
   }
 

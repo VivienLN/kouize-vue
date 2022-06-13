@@ -78,7 +78,7 @@
 
 <style scoped>
   .circle {
-    height: 10rem;
+    height: 7rem;
     margin: 0 auto;
     transform: rotate(-90deg);
     fill: var(--card-bg);
@@ -96,7 +96,7 @@
     font-size: var(--fs-xl);
     font-weight: var(--fw-bold);
     z-index: 110;
-    line-height: 10rem;
+    line-height: 7rem;
   }
 
   .timer {

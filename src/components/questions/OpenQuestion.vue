@@ -165,7 +165,7 @@
 
 <style scoped>
   .timer {
-    margin-bottom: -2rem;
+    margin-bottom: -1.5rem;
     position: relative;
     z-index: 10;
   }
@@ -174,8 +174,7 @@
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--title-color);
-    margin-bottom: 2rem;
-    padding: 3rem 2rem 2rem;
+    padding: 2rem;
     font-weight: var(--fw-bold);
     text-align: center;
   }
