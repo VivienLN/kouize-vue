@@ -107,20 +107,24 @@
       />
 
       <!-- Modals -->
-      <Modal v-if="showSettings" @close="showSettings = false" title="Réglages">
-        <Settings @onSaved="updateSettings" />
-      </Modal>
-      <Modal v-if="showLeaderboardSession" @close="showLeaderboardSession = false" title="Classement">
-        <Leaderboard 
-          score-list="scores_session"
-        />
-      </Modal>
-      <Modal v-if="showLeaderboardGlobal" @close="showLeaderboardGlobal = false" title="Classement général">
-        <Leaderboard 
-          score-list="scores_global"
-          :resets="['scores_session']"
-        />
-      </Modal>
+      <Leaderboard 
+        title="Classement"
+        v-if="showLeaderboardSession"
+        @close="showLeaderboardSession = false"
+        score-list="scores_session"
+      />
+      <Leaderboard 
+        title="Classement général"
+        v-if="showLeaderboardGlobal"
+        @close="showLeaderboardGlobal = false"
+        score-list="scores_global"
+        :resets="['scores_session']"
+      />
+      <Settings 
+        v-if="showSettings"
+        @close="showSettings = false"
+        @onSaved="updateSettings" 
+      />
     </div>
 
     <!-- Commands -->
@@ -155,7 +159,7 @@
   </main>
 </template>
 
-<style>
+<style scoped>
   main {
     display: flex;
     flex-direction: column;

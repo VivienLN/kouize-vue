@@ -28,6 +28,9 @@
       <div class="content">
         <slot></slot>
       </div>
+      <footer>
+        <slot name="footer"></slot>
+      </footer>
     </Card>
   </div>
 </template>
@@ -68,5 +71,10 @@
     flex-grow: 1;
     height: 100%;
     overflow: auto;
+  }
+  footer {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: end;
   }
 </style>

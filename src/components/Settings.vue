@@ -5,6 +5,7 @@
   import DefaultSettings from '../utils/DefaultSettings';
   import JSON5 from 'json5';
   import { SaveIcon } from '@heroicons/vue/solid';
+  import Modal from '../components/ui/Modal.vue';
 
   export default {
     props: [
@@ -15,6 +16,7 @@
       ThemeSelect,
       FontSelect,
       SaveIcon,
+      Modal,
     },
 
     data() {
@@ -52,37 +54,39 @@
 </script>
 
 <template>
-  <div class="settings">
-    <label for="settings-channel">Nom de la chaîne</label>
-    <div>
-      <input id="settings-channel" v-model="channel" />
+  <Modal title="Réglages">
+    <div class="settings">
+      <label for="settings-channel">Nom de la chaîne</label>
+      <div>
+        <input id="settings-channel" v-model="channel" />
+      </div>
+
+      <label for="settings-timer">Durée des questions par défaut (secondes)</label>
+      <div>
+        <input id="settings-timer" v-model="timer" type="number" min="0" step="5" />
+        <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
+      </div>
+
+      <label for="settings-theme">Thème</label>
+      <div>
+        <ThemeSelect id="settings-theme" />
+      </div>
+
+      <label for="settings-font">Police</label>
+      <div>
+        <fontSelect id="settings-font" />
+      </div>
+
+      <label for="settings-questions">Questions</label>
+      <div>
+        <textarea id="settings-questions" cols="80" rows="20" v-model="questions" ref="questions" />
+      </div>
     </div>
 
-    <label for="settings-timer">Durée des questions par défaut (secondes)</label>
-    <div>
-      <input id="settings-timer" v-model="timer" type="number" min="0" step="5" />
-      <em>(Utilisé seulement pour afficher le timer des questions. Tant que vous ne révélez pas la réponse, les viewers peuvent jouer)</em>
-    </div>
-
-    <label for="settings-theme">Thème</label>
-    <div>
-      <ThemeSelect id="settings-theme" />
-    </div>
-
-    <label for="settings-font">Police</label>
-    <div>
-      <fontSelect id="settings-font" />
-    </div>
-
-    <label for="settings-questions">Questions</label>
-    <div>
-      <textarea id="settings-questions" cols="80" rows="20" v-model="questions" ref="questions" />
-    </div>
-
-    <div>
-      <Button color="primary" @click="save"><SaveIcon /> Save</Button>
-    </div>
-  </div>
+    <template #footer>
+      <Button color="primary" @click="save"><SaveIcon /> Sauvegarder</Button>
+    </template>
+  </Modal>
 </template>
 
 <style scoped>
@@ -112,10 +116,6 @@
 
   input:focus-visible, select:focus-visible, textarea:focus-visible {
     outline: 2px solid var(--secondary-color);
-  }
-
-  .settings > div:last-child {
-    grid-column-start: 6;
   }
 
   .settings button {

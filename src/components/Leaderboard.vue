@@ -3,17 +3,20 @@
   import PrizeIcon from './ui/icons/PrizeIcon.vue';
   import Button from './ui/Button.vue';
   import { RefreshIcon } from '@heroicons/vue/solid';
+  import Modal from '../components/ui/Modal.vue';
 
   export default {
     props: [
       'scoreList',
       'resets',
+      'title',
     ],
 
     components: {
       PrizeIcon,
       Button,
       RefreshIcon,
+      Modal,
     },
 
     data() {
@@ -36,7 +39,7 @@
 </script>
 
 <template>
-  <div>
+  <Modal :title="title">
     <ul>
       <li v-for="({userName, score, rank}, index) in data">
         <div>
@@ -55,8 +58,10 @@
         </div>
       </li>
     </ul>
-    <Button color="secondary" @click="reset"><RefreshIcon /> Reset</Button>
-  </div>
+    <template #footer>
+      <Button color="primary" @click="reset"><RefreshIcon /> Reset</Button>
+    </template>
+  </Modal>
 </template>
 
 <style scoped>
