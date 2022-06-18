@@ -1,13 +1,13 @@
 <script>
-  import Settings from './components/Settings.vue';
+  import Settings from './components/SettingsModal.vue';
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
-  import Leaderboard from './components/Leaderboard.vue';
+  import Leaderboard from './components/LeaderboardModal.vue';
   import { FastForwardIcon, CogIcon, CodeIcon } from '@heroicons/vue/solid';
   import PrizeIcon from './components/ui/icons/PrizeIcon.vue';
   import Modal from './components/ui/Modal.vue';
   import Question from './components/Question.vue';
-  import Questions from './components/Questions.vue';
+  import Questions from './components/QuestionsModal.vue';
   
   export default {
     components: {

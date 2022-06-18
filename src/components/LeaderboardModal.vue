@@ -3,7 +3,7 @@
   import PrizeIcon from './ui/icons/PrizeIcon.vue';
   import Button from './ui/Button.vue';
   import { RefreshIcon } from '@heroicons/vue/solid';
-  import Modal from '../components/ui/Modal.vue';
+  import Modal from './ui/Modal.vue';
 
   export default {
     props: [
