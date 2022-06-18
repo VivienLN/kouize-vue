@@ -3,10 +3,11 @@
   import Chat from './utils/Chat.js';
   import JSON5 from 'json5';
   import Leaderboard from './components/Leaderboard.vue';
-  import { FastForwardIcon, CogIcon } from '@heroicons/vue/solid';
+  import { FastForwardIcon, CogIcon, CodeIcon } from '@heroicons/vue/solid';
   import PrizeIcon from './components/ui/icons/PrizeIcon.vue';
   import Modal from './components/ui/Modal.vue';
   import Question from './components/Question.vue';
+  import Questions from './components/Questions.vue';
   
   export default {
     components: {
@@ -15,8 +16,10 @@
       Settings,
       Leaderboard,
       PrizeIcon,
+      Questions,
       FastForwardIcon,
       CogIcon,
+      CodeIcon,
     },
 
     data() {
@@ -26,9 +29,10 @@
         questionIndex: 0,
         questionStep: 0,
         chat: Chat,
-        showSettings: false,
-        showLeaderboardSession: false,
-        showLeaderboardGlobal: false,
+        showSettingsModal: false,
+        showLeaderboardSessionModal: false,
+        showLeaderboardGlobalModal: false,
+        showQuestionsModal: false,
       }
     },
 
@@ -73,7 +77,8 @@
         this.chat.init(this.settings.channel);
         // Close settings
         if(!hasErrors) {
-          this.showSettings = false;
+          this.showSettingsModal = false;
+          this.showQuestionsModal = false;
         }
       },
       showModal(variableName) {
@@ -82,9 +87,10 @@
         this[variableName] = newValue;
       },
       hideAllModals() {
-        this.showSettings = false;
-        this.showLeaderboardSession = false;
-        this.showLeaderboardGlobal = false;
+        this.showSettingsModal = false;
+        this.showLeaderboardSessionModal = false;
+        this.showLeaderboardGlobalModal = false;
+        this.showQuestionsModal = false;
       }
     },
   }
@@ -109,51 +115,63 @@
       <!-- Modals -->
       <Leaderboard 
         title="Classement"
-        v-if="showLeaderboardSession"
-        @close="showLeaderboardSession = false"
+        v-if="showLeaderboardSessionModal"
+        @close="showLeaderboardSessionModal = false"
         score-list="scores_session"
       />
       <Leaderboard 
         title="Classement général"
-        v-if="showLeaderboardGlobal"
-        @close="showLeaderboardGlobal = false"
+        v-if="showLeaderboardGlobalModal"
+        @close="showLeaderboardGlobalModal = false"
         score-list="scores_global"
         :resets="['scores_session']"
       />
       <Settings 
-        v-if="showSettings"
-        @close="showSettings = false"
+        v-if="showSettingsModal"
+        @close="showSettingsModal = false"
+        @onSaved="updateSettings" 
+      />
+      <Questions 
+        v-if="showQuestionsModal"
+        @close="showQuestionsModal = false"
         @onSaved="updateSettings" 
       />
     </div>
 
     <!-- Commands -->
     <footer>
-      <Button @click="nextStep" color="primary">
-        <FastForwardIcon />
-        Suite
-      </Button>
 
       <Button 
         color="secondary"
-        @click="showModal('showLeaderboardSession')"
+        @click="showModal('showLeaderboardSessionModal')"
       >
         <PrizeIcon />
         Classement
       </Button>
       <Button 
         color="secondary"
-        @click="showModal('showLeaderboardGlobal')"
+        @click="showModal('showLeaderboardGlobalModal')"
       >
         <PrizeIcon />
         Classement général
       </Button>
       <Button 
         color="secondary"
-        @click="showModal('showSettings')"
+        @click="showModal('showSettingsModal')"
       >
         <CogIcon />
         Réglages
+      </Button>
+      <Button 
+        color="secondary"
+        @click="showModal('showQuestionsModal')"
+      >
+        <CodeIcon />
+        Questions
+      </Button>
+      <Button @click="nextStep" color="primary">
+        <FastForwardIcon />
+        Suite
       </Button>
     </footer>
   </main>
