@@ -58,7 +58,7 @@
       nextQuestion() {
         this.setQuestion(this.questionIndex + 1);
       },
-      updateSettings() {
+      updateSettings(reload = false) {
         var hasErrors = false;
         try {
           var questions = JSON5.parse(localStorage.getItem('questions'));
@@ -66,6 +66,7 @@
           var questions = [];
           hasErrors= true;
           alert('Formattage questions invalide!');
+
         }
 
         this.settings = {
@@ -79,6 +80,10 @@
         if(!hasErrors) {
           this.showSettingsModal = false;
           this.showQuestionsModal = false;
+        }
+        // Reload?
+        if(reload) {
+          location.reload();
         }
       },
       showModal(variableName) {
@@ -129,12 +134,12 @@
       <Settings 
         v-if="showSettingsModal"
         @close="showSettingsModal = false"
-        @onSaved="updateSettings" 
+        @onSaved="updateSettings(true)" 
       />
       <Questions 
         v-if="showQuestionsModal"
         @close="showQuestionsModal = false"
-        @onSaved="updateSettings" 
+        @onSaved="updateSettings(true)" 
       />
     </div>
 
