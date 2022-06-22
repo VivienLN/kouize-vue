@@ -11,6 +11,17 @@ export default {
         "Nuukiikaalt",
         "Guuriitanaak"
       ]
+    }, 
+    {
+      type: 'open',
+      label: 'Quel est le jeu zelda avec un ocarina du temps ?',
+      winners: 3,
+      show_letters: true,
+      answers: [
+        'The Legend of Zelda: Ocarina of Time',
+        'Zelda: Ocarina of Time',
+        'Zelda OoT',
+      ],
     }
   ]
 }
