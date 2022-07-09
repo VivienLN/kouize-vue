@@ -5,6 +5,7 @@
   import Timer from '../Timer.vue';
   import FuzzySet from 'fuzzyset'
   import PrizeIcon from '../ui/icons/PrizeIcon.vue';
+  import QuestionNumber from '../ui/QuestionNumber.vue';
 
   // Steps:
   // 0: show the question
@@ -18,12 +19,15 @@
       'step',
       'chat',
       'settings',
+      'number',
+      'totalQuestions'
     ],
 
     components: {
       Card,
       Timer,
       PrizeIcon,
+      QuestionNumber,
     },
 
     data() {      
@@ -147,6 +151,7 @@
     <div>
       <Card class="label">
         <h2>
+          <QuestionNumber :number="number" :total="totalQuestions" />
           {{ question.label }}
         </h2>
         <p class="answer" v-if="step>=1">
@@ -183,6 +188,7 @@
   }
 
   .label {
+    position: relative;
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--title-color);

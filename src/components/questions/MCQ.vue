@@ -2,6 +2,7 @@
   import ScoresHelpers from '../../utils/ScoresHelper';
   import Card from '../ui/Card.vue';
   import Timer from '../Timer.vue';
+  import QuestionNumber from '../ui/QuestionNumber.vue';
 
   // Steps:
   // 0: show the question
@@ -16,11 +17,14 @@
       'step',
       'chat',
       'settings',
+      'number',
+      'totalQuestions'
     ],
 
     components: {
       Card,
       Timer,
+      QuestionNumber,
     },
 
     data() {      
@@ -34,7 +38,7 @@
     computed: {
       timerDuration() {
         return this.question?.timer ?? this.settings.timer;
-      }
+      },
     },
 
     methods: {
@@ -121,6 +125,7 @@
     <div>
       <Card class="label">
         <h2>
+          <QuestionNumber :number="number" :total="totalQuestions" />
           {{ question.label }}
         </h2>
       </Card>
@@ -157,6 +162,7 @@
   }
 
   .label {
+    position: relative;
     border-radius: var(--bradius-lg);
     font-size: var(--fs-xl);
     color: var(--title-color);

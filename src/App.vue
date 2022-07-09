@@ -98,6 +98,11 @@
         this.showQuestionsModal = false;
       }
     },
+    computed: {
+      totalQuestions() {
+        return this.settings.questions.length;
+      }
+    }
   }
 </script>
 
@@ -110,6 +115,8 @@
         :key="questionIndex"
         v-if="question" 
         :question="question" 
+        :questionIndex="questionIndex"
+        :totalQuestions="totalQuestions"
         :step="questionStep" 
         :chat="chat"
         :settings="settings"
