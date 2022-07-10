@@ -9,6 +9,9 @@
   import Question from './components/Question.vue';
   import Questions from './components/QuestionsModal.vue';
   
+
+  const VERSION = 'v1.1.1';
+
   export default {
     components: {
       Question,
@@ -101,6 +104,9 @@
     computed: {
       totalQuestions() {
         return this.settings.questions.length;
+      },
+      version() {
+        return VERSION;
       }
     }
   }
@@ -186,6 +192,7 @@
         Suite
       </Button>
     </footer>
+    <p class="version">{{ version }}</p>
   </main>
 </template>
 
@@ -214,5 +221,15 @@
     gap: 1rem;
     padding: 2rem;
 
+  }
+
+  .version {
+    font-size: var(--fs-xs);
+    padding: .2rem .4rem ;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: .5;
   }
 </style>
