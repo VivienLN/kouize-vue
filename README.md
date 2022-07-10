@@ -65,6 +65,17 @@ Dès qu'il le souhaite, le streamer peut cliquer sur "Suite" pour afficher la bo
 * **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
 * **`points` (optionnel) :** Le nombre de points que rapporte cette question
 
+## Question Vrai ou Faux (type "truefalse")
+
+Variante des questions à choix multiple, où il n'y a que deux réponses possibles : vrai ou faux. Les réponses sont toujours affichées dans cet ordre (pas de mélange).
+
+**Paramètres :**
+* **`type` :** Régler sur `truefalse`
+* **`label` :** l'intitulé de la question
+* **`answer` :** `true` ou `false`, respectivement si l'affirmation est vraie, ou fausse.
+* **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
+* **`points` (optionnel) :** Le nombre de points que rapporte cette question
+
 ## Question ouverte (type "open")
 
 Ce sont des questions dont la réponse est libre. Les viewers répondent en tapant directement leur réponse dans le chat. Une tolérance est appliquée envers les fautes de frappe, et vous pouvez définir plusieurs réponses valides.
