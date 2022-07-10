@@ -1,6 +1,7 @@
 <script>
   import MCQ from './questions/MCQ.vue';
   import OpenQuestion from './questions/OpenQuestion.vue';
+  import TrueFalse from './questions/TrueFalse.vue';
   
   export default {
     props: [
@@ -15,6 +16,7 @@
     components: {
       MCQ,
       OpenQuestion,
+      TrueFalse,
     },
     computed: {
       number() {
@@ -38,6 +40,16 @@
   <OpenQuestion
     v-bind="$attrs"
     v-if="question.type == 'open'"
+    :question="question" 
+    :number="number"
+    :totalQuestions="totalQuestions"
+    :step="step" 
+    :chat="chat"
+    :settings="settings"
+  />
+  <TrueFalse 
+    v-bind="$attrs"
+    v-if="question.type == 'truefalse'"
     :question="question" 
     :number="number"
     :totalQuestions="totalQuestions"
