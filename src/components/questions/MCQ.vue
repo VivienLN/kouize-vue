@@ -54,18 +54,30 @@
       // Only keep the 4 first answers, and shuffle them
       // Also restructure the array a little
       let letters = ['A', 'B', 'C', 'D'];
+
+      // Get 4 first answers and create objects for easier manipulation
       this.computedAnswers = this.question.answers
         .slice(0, 4)
-        .map((answer, index) => ({
-          label: answer, 
-          is_right: !!(index === 0),
-          users: [],
-        }))
-        .sort((a, b) => 0.5 - Math.random())
-        .map((answer, index) => ({
-          ...answer,
-          letter: letters[index],
-        }));
+        .map((answer, index) => {
+          let rightAnswerIndex = this.question.right_answer !== undefined ? this.question.right_answer : 0;
+          return {
+            label: answer, 
+            is_right: !!(index === rightAnswerIndex),
+            users: [],
+          }
+        })
+
+      // Random sort (only if question.right_answer is undefined, see readme)
+      if(this.question.right_answer === undefined) {
+        this.computedAnswers = this.computedAnswers.sort((a, b) => 0.5 - Math.random())
+      }
+
+      // Add letters
+      this.computedAnswers = this.computedAnswers.map((answer, index) => ({
+        ...answer,
+        letter: letters[index],
+      }));
+      
       // Reset users having answered
       this.answeredUsers = [];
 

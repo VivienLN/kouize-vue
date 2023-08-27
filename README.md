@@ -61,11 +61,12 @@ Dès qu'il le souhaite, le streamer peut cliquer sur "Suite" pour afficher la bo
 **Paramètres :**
 * **`type` :** Régler sur `mcq`
 * **`label` :** l'intitulé de la question
-* **`answers` :** tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
+* **`answers` :** tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. Si `right_answer` n'est pas défini, **la première réponse de la liste sera la bonne réponse**, et les réponses sont mélangées au moment de l'affichage. C'est la façon la plus simple de définir une question.
+* **`right_answer` (optionnel) :** Index de la bonne réponse dans `answers` (entre 0 et 3). Si défini, les réponses ne seront **pas** mélangées lors de l'affichage.
 * **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
 * **`points` (optionnel) :** Le nombre de points que rapporte cette question
-* **`image` (optionnel) :** image affichée lors de la question
-* **`answer_image` (optionnel) :** image affichée lorsque la réponse est révélée
+* **`image` (optionnel) :** Image affichée lors de la question
+* **`answer_image` (optionnel) :** Image affichée lorsque la réponse est révélée
 
 ## Question Vrai ou Faux (type "truefalse")
 
