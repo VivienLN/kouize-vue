@@ -147,5 +147,7 @@ cd dist
 git add .
 git commit -m "deploy vXX.XX.XX"
 git tag deploy-vXX.XX.XX
-git push --tags
+git push --follow-tags
 ```
+
+* Note : Pas besoin de `checkout` ou quoi que ce soit de plus, le répertoire `dist` a son propre repo local.*
