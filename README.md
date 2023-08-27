@@ -64,6 +64,8 @@ Dès qu'il le souhaite, le streamer peut cliquer sur "Suite" pour afficher la bo
 * **`answers` :** tableau contenant les réponses proposées. Seules les 4 premières de la liste seront prises en compte. **La première réponse de la liste sera la bonne réponse**. Les réponses sont mélangées au moment de l'affichage.
 * **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
 * **`points` (optionnel) :** Le nombre de points que rapporte cette question
+* **`image` (optionnel) :** image affichée lors de la question
+* **`answer_image` (optionnel) :** image affichée lorsque la réponse est révélée
 
 ## Question Vrai ou Faux (type "truefalse")
 
@@ -75,6 +77,8 @@ Variante des questions à choix multiple, où il n'y a que deux réponses possib
 * **`answer` :** `true` ou `false`, respectivement si l'affirmation est vraie, ou fausse.
 * **`timer` (optionnel) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
 * **`points` (optionnel) :** Le nombre de points que rapporte cette question
+* **`image` (optionnel) :** image affichée lors de la question
+* **`answer_image` (optionnel) :** image affichée lorsque la réponse est révélée
 
 ## Question ouverte (type "open")
 
@@ -92,6 +96,8 @@ Seuls les premiers joueurs à répondre obtiendront des points, de manière dég
 * **`timer` (optionnel, defaut : selon réglages généraux) :** La durée du chrono affiché au dessus de la question, en secondes. Si la valeur fournie est `0`, le chrono ne s'affiche pas. Si aucune valeur n'est fournie, la durée est celle spécifiée dans les réglages.
 * **`points` (optionnel, defaut : `1`) :** Le multiplieur de points gagnés pour une bonne réponse. Par défaut, `1`. Par exemple, s'il y a 3 gagnants et que `points` vaut `10`, le plus rapide gagnera 30 points, le second 20 points, et le troisième 10 points.
 * **`show_letters` (optionnel, defaut : `false`) :** `true` ou `false`. Si `true`, affiche le nombre de lettres présentes dans la réponse (la première de la liste fournie) en dessous de l'intitulé, un peu à la façon d'un jeu de pendu. Passé la moitié du temps imparti, certaines lettres seront révélées pour faciliter le jeu. Note : si timer est à zero (temps infini), les lettres vides sont bien affichées, mais les lettres ne se révéleront pas.
+* **`image` (optionnel) :** image affichée lors de la question
+* **`answer_image` (optionnel) :** image affichée lorsque la réponse est révélée
 
 **Exemple de question ouverte :**
 ```

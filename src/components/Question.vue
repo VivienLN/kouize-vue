@@ -1,4 +1,5 @@
 <script>
+  import QuestionImage from './QuestionImage.vue';
   import MCQ from './questions/MCQ.vue';
   import OpenQuestion from './questions/OpenQuestion.vue';
   import TrueFalse from './questions/TrueFalse.vue';
@@ -17,6 +18,7 @@
       MCQ,
       OpenQuestion,
       TrueFalse,
+      QuestionImage
     },
     computed: {
       number() {
@@ -27,6 +29,10 @@
 </script>
 
 <template>
+  <QuestionImage 
+    :question="question" 
+    :step="step" 
+  />
   <MCQ 
     v-bind="$attrs"
     v-if="question.type == 'mcq'"
