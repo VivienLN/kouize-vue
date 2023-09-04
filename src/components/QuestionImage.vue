@@ -15,7 +15,7 @@
   ></div>
   <div 
     class="image" 
-    v-if="step === 2" 
+    v-if="step === 2 && question.answer_image" 
     :style="{ 'background-image': `url(${question.answer_image})` }"
   ></div>
 </template>
