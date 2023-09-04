@@ -120,11 +120,9 @@
         // Show right answer
         if(newStep == 1) {
           // Save Scores
-          // If there are 3 winners, first one gets 3 points, 2nd gets 2, etc.
+          // Every winner gets same number of points
           this.winners.forEach((username, i) => {
-            let multiplier = this.question?.points ?? 1;
-            let points = (this.winners.length - i) * multiplier;
-            ScoresHelpers.incrementUserScore(username, points);
+            ScoresHelpers.incrementUserScore(username, this.question?.points);
           });
 
           // Event
