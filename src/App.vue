@@ -10,7 +10,7 @@
   import Questions from './components/QuestionsModal.vue';
   
 
-  const VERSION = 'v1.3.1';
+  const VERSION = 'v1.3.3';
 
   export default {
     components: {
