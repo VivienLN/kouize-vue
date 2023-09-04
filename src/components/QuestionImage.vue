@@ -8,8 +8,16 @@
 </script>
 
 <template>
-  <div class="image" v-if="step <= 1" :style="{ 'background-image': `url(${question.image})` }"></div>
-  <div class="image" v-if="step === 2" :style="{ 'background-image': `url(${question.answer_image})` }"></div>
+  <div 
+    class="image" 
+    v-if="step <= 1 || (step === 2 && !question.answer_image)"
+    :style="{ 'background-image': `url(${question.image})` }"
+  ></div>
+  <div 
+    class="image" 
+    v-if="step === 2" 
+    :style="{ 'background-image': `url(${question.answer_image})` }"
+  ></div>
 </template>
 
 <style scoped>
